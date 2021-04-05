@@ -56,3 +56,7 @@
 .back-white {
     -fx-background-color: white;
 }
+.back-transparent {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px;
+}
