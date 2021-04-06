@@ -13,18 +13,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.dashboardController">
    <children>
       <BorderPane fx:id="border_pane" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../styleSheet/app.css">
          <left>
             <HBox prefHeight="768.0" prefWidth="166.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="container" stylesheets="@../styleSheet/app.css">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kunafa Hut" wrappingWidth="195.7294921875">
                            <styleClass>
                               <String fx:value="fn-48" />
                               <String fx:value="txt-center" />
+                              <String fx:value="container" />
                            </styleClass>
                            <fill>
                               <RadialGradient centerX="0.5" centerY="0.4519230769230769" radius="0.5">
@@ -37,7 +38,7 @@
                         </Text>
                         <VBox prefHeight="548.0" prefWidth="246.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#show_sellbard" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="البيع">
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="البيع">
                                  <VBox.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </VBox.margin>
@@ -99,7 +100,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="العرض">
+                              <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#showdashboard" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="العرض">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
