@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,18 +14,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.dashboardController">
    <children>
-      <BorderPane fx:id="border_pane" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../styleSheet/app.css">
+      <BorderPane fx:id="border_pane" prefHeight="768.0" prefWidth="1360.0">
          <left>
             <HBox prefHeight="768.0" prefWidth="166.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="container" stylesheets="@../styleSheet/app.css">
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card" stylesheets="@../styleSheet/sample.css">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kunafa Hut" wrappingWidth="195.7294921875">
-                           <styleClass>
-                              <String fx:value="fn-48" />
-                              <String fx:value="txt-center" />
-                              <String fx:value="container" />
-                           </styleClass>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kunafa Hut" textAlignment="CENTER" wrappingWidth="195.7294921875">
                            <fill>
                               <RadialGradient centerX="0.5" centerY="0.4519230769230769" radius="0.5">
                                  <stops>
@@ -35,10 +29,13 @@
                                  </stops>
                               </RadialGradient>
                            </fill>
+                           <font>
+                              <Font size="52.0" />
+                           </font>
                         </Text>
-                        <VBox prefHeight="548.0" prefWidth="246.0">
+                        <VBox prefHeight="645.0" prefWidth="196.0" stylesheets="@../styleSheet/sample.css">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="البيع">
+                              <Button alignment="CENTER" blendMode="SRC_ATOP" depthTest="DISABLE" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" text="البيع">
                                  <VBox.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </VBox.margin>
@@ -53,9 +50,6 @@
                                        </stops>
                                     </RadialGradient>
                                  </textFill>
-                                 <font>
-                                    <Font name="AlArabiya" size="27.0" />
-                                 </font>
                                  <graphic>
                                     <FontAwesomeIconView glyphName="SHOPPING_CART" size="25" textAlignment="CENTER">
                                        <fill>
@@ -69,7 +63,7 @@
                                     </FontAwesomeIconView>
                                  </graphic>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="التحكم">
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" stylesheets="@../styleSheet/sample.css" text="التحكم">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
@@ -100,7 +94,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#showdashboard" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="العرض">
+                              <Button alignment="CENTER" mnemonicParsing="false"  prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" stylesheets="@../styleSheet/sample.css" text="العرض">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
@@ -131,7 +125,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" text="كاشير">
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="0.0" prefWidth="156.0" style="-fx-background-radius: 50;" styleClass="fn-32" stylesheets="@../styleSheet/sample.css" text="كاشير">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>

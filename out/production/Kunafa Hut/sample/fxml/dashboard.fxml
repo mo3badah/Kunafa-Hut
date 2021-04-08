@@ -59,6 +59,7 @@
                   <String fx:value="container" />
                   <String fx:value="gradient-color" />
                   <String fx:value="shadow" />
+                  <String fx:value="shart-background" />
                </styleClass>
             </BarChart>
          </children>
