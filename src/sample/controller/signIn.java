@@ -47,5 +47,6 @@ public class signIn implements Initializable {
         }
         System.out.println(userdata);
         loginText.setText(userdata);
+        //ok
     }
 }
