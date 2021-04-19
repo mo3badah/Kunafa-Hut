@@ -85,15 +85,13 @@
     -fx-text-alignment: center;
 }
 .button {
-    /*
     -fx-background-color: rgba(186, 131, 131, 0.1);
-    -fx-fill: #070606;
-    -fx-text-fill: #000000;
-     */
     -fx-font-size: 20px;
     -fx-font-family: AlArabiya;
     -fx-text-alignment: center;
-    /*-fx-effect: dropShadow(three-pass-box, rgba(0,0,0,.2), 10.0, 0.0, 0.0, 10.0);*/
+    -fx-fill: #070606;
+    -fx-text-fill: #000000;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,.2), 10.0, 0.0, 0.0, 10.0);
     -fx-background-radius: 15px;
 
 }
@@ -105,10 +103,4 @@
 .fn-32 {
     -fx-font-size: 24px;
     -fx-font-family: AlArabiya;
-}
-.hover-hand:hover {
-    -fx-cursor: hand;
-}
-.hover-gray:hover {
-    -fx-background-color: #d2d2d2;
 }
