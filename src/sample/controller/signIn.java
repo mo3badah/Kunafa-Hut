@@ -19,12 +19,7 @@ import javafx.scene.paint.Color;
 
 
 public class signIn implements Initializable {
-    // DB parameters
-    private String dburl = "jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true";
-    private String dbuser = "moreda";
-    private String dbpass = "moreda2021";
-    private Connection dbconn;
-    private Statement dbstm;
+    public Statement dbstm;
     private ResultSet dbres;
     private ResultSet dbresLog;
 
@@ -48,17 +43,14 @@ public class signIn implements Initializable {
     public void buttonAlert(javafx.event.ActionEvent actionEvent) throws SQLException {
 
         //       loginText.setText("you enter the sign in button successfully");
-        dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
-        dbstm = dbconn.createStatement();
-        dbres = dbstm.executeQuery("SELECT * from kunafahut.user");
-        while (dbres.next()) {
-            String username = dbres.getString(1);
-            String phone = dbres.getString(2);
-            String password = dbres.getString(3);
-            String timedate = dbres.getString(4);
-            userdata += "username : " + username + " phone: " + phone + " password: " + password + " timedate: " + timedate + " .\n";
-        }
+        //dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
+        //dbstm = dbconn.createStatement();
+        /*dbres = dbstm.executeQuery("SELECT * from kunafahut.user");
+
+
         System.out.println(userdata);
+        */
+        initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021");
         if (userName.getText().isEmpty() == true) {
             loginText.setText("please enter the user name and password");
         } else try {
@@ -90,4 +82,19 @@ public class signIn implements Initializable {
             e.getCause();
         }
     }
+    public void initializeDB(String dburl,String dbuser,String dbpass) {
+        // DB parameters
+        Connection dbconn;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Driver loaded");
+            dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
+            System.out.println("DataBase connected");
+            dbstm = dbconn.createStatement();
+        } catch (ClassNotFoundException | SQLException var2) {
+            System.err.println(var2.getMessage());
+        }
+
+    }
 }
+

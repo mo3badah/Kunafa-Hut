@@ -4,6 +4,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,15 +13,274 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="selling_bane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.selling">
+<AnchorPane fx:id="selling_bane" prefHeight="694.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.selling">
    <children>
-      <HBox>
+      <VBox layoutX="893.0" layoutY="11.0" prefHeight="530.0" prefWidth="416.0">
          <children>
-            <VBox prefHeight="448.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css">
+            <TableView fx:id="sellingTable" prefHeight="426.0" prefWidth="416.0" stylesheets="@../styleSheet/selling..css">
+              <columns>
+                  <TableColumn fx:id="Tnetprice" prefWidth="59.0" text="الاجمالي" />
+                  <TableColumn fx:id="Tdisc" prefWidth="45.0" text="الخصم" />
+                  <TableColumn fx:id="Tprice" prefWidth="55.0" text="السعر" />
+                  <TableColumn fx:id="Tquantity" prefWidth="51.0" text="الكمية" />
+                  <TableColumn fx:id="Tno" prefWidth="43.0" text="العدد" />
+                <TableColumn fx:id="Tname" prefWidth="96.0" text="الاسم" />
+                <TableColumn fx:id="Ttype" prefWidth="66.0" text="النوع" />
+              </columns>
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="fn-14" />
+               </styleClass>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="ميكسات ">
+                  <VBox prefHeight="155.0" prefWidth="250.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="الاجمالي">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <stylesheets>
+                              <URL value="@../styleSheet/selling..css" />
+                              <URL value="@../styleSheet/selling..css" />
+                           </stylesheets>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="TallTotal" alignment="CENTER" prefHeight="45.0" prefWidth="210.0" stylesheets="@../styleSheet/selling..css">
+                           <styleClass>
+                              <String fx:value="txt-center" />
+                              <String fx:value="card" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="155.0" prefWidth="250.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="اجمالي الخصم">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <stylesheets>
+                              <URL value="@../styleSheet/selling..css" />
+                              <URL value="@../styleSheet/selling..css" />
+                           </stylesheets>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="TallDisc" alignment="CENTER" prefHeight="45.0" prefWidth="210.0" stylesheets="@../styleSheet/selling..css">
+                           <styleClass>
+                              <String fx:value="txt-center" />
+                              <String fx:value="card" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutY="11.0" prefHeight="676.0" prefWidth="162.0" stylesheets="@../styleSheet/selling..css">
+         <children>
+            <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="جديد">
+               <styleClass>
+                  <String fx:value="back-transparent" />
+                  <String fx:value="fill-gray" />
+                  <String fx:value="fn-32" />
+                  <String fx:value="txt-center" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../styleSheet/selling..css" />
+                  <URL value="@../styleSheet/selling..css" />
+               </stylesheets>
+            </Label>
+            <Button fx:id="Frise" mnemonicParsing="false" onAction="#buttonFrise" prefHeight="90.0" prefWidth="190.0" stylesheets="@../styleSheet/selling..css" text="ارز فرن">
+               <styleClass>
+                  <String fx:value="hover-gray" />
+                  <String fx:value="hover-hand" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="Orise" mnemonicParsing="false" onAction="#buttonOrise" prefHeight="90.0" prefWidth="190.0" stylesheets="@../styleSheet/selling..css" text="ارز عادي">
+               <styleClass>
+                  <String fx:value="hover-gray" />
+                  <String fx:value="hover-hand" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="Dislut" mnemonicParsing="false" onAction="#buttonDislut" prefHeight="94.0" prefWidth="142.0" stylesheets="@../styleSheet/selling..css" text="دسباسيتو لوتس" textAlignment="CENTER" wrapText="true">
+               <styleClass>
+                  <String fx:value="hover-gray" />
+                  <String fx:value="hover-hand" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="Disnut" mnemonicParsing="false" onAction="#buttonDisnut" prefHeight="70.0" prefWidth="142.0" stylesheets="@../styleSheet/selling..css" text="ديباسيتو نوتيلا" textAlignment="CENTER" wrapText="true">
+               <styleClass>
+                  <String fx:value="hover-gray" />
+                  <String fx:value="hover-hand" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="Cofee" mnemonicParsing="false" onAction="#buttoncofee" prefHeight="90.0" prefWidth="190.0" stylesheets="@../styleSheet/selling..css" text="قهوه">
+               <styleClass>
+                  <String fx:value="hover-gray" />
+                  <String fx:value="hover-hand" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <HBox prefHeight="79.0" prefWidth="193.0">
+               <children>
+                  <Button fx:id="Water" mnemonicParsing="false" onAction="#buttonwater" prefHeight="90.0" prefWidth="190.0" stylesheets="@../styleSheet/selling..css" text="مياة">
+                     <styleClass>
+                        <String fx:value="hover-gray" />
+                        <String fx:value="hover-hand" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="Pepsi" mnemonicParsing="false" onAction="#buttonpepsi" prefHeight="90.0" prefWidth="190.0" stylesheets="@../styleSheet/selling..css" text="بيبسي">
+                     <styleClass>
+                        <String fx:value="hover-gray" />
+                        <String fx:value="hover-hand" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </HBox>
+            <TextField fx:id="newno" alignment="CENTER" prefHeight="75.0" prefWidth="193.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font></TextField>
+         </children>
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="button-container-mouse-moved" />
+            <String fx:value="button-container-selected" />
+         </styleClass>
+      </VBox>
+      <HBox layoutX="408.0" layoutY="546.0" prefHeight="126.0" prefWidth="265.0">
+         <children>
+            <VBox prefHeight="155.0" prefWidth="250.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="السعر">
+                     <styleClass>
+                        <String fx:value="back-transparent" />
+                        <String fx:value="fill-gray" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="txt-center" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <stylesheets>
+                        <URL value="@../styleSheet/selling..css" />
+                        <URL value="@../styleSheet/selling..css" />
+                     </stylesheets>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="onePrice" alignment="CENTER" prefHeight="45.0" prefWidth="210.0" promptText="سعر الطلب" stylesheets="@../styleSheet/selling..css">
+                     <styleClass>
+                        <String fx:value="txt-center" />
+                        <String fx:value="card" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial Black" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <Button fx:id="addOne" mnemonicParsing="false" onAction="#addItem" prefHeight="109.0" prefWidth="216.0" stylesheets="@../styleSheet/selling..css" text="اضافة">
+               <styleClass>
+                  <String fx:value="hover-hand" />
+                  <String fx:value="hover-gray" />
+               </styleClass>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children></HBox>
+      <VBox layoutX="673.0" prefHeight="706.0" prefWidth="229.0">
+         <children>
+            <VBox prefHeight="461.0" prefWidth="211.0" stylesheets="@../styleSheet/selling..css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="202.0" style="-fx-background-radius: 50;" text="كنافة كلاسيك">
                      <styleClass>
                         <String fx:value="back-transparent" />
                         <String fx:value="fill-gray" />
@@ -29,14 +289,14 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </VBox.margin>
                      <stylesheets>
                         <URL value="@../styleSheet/selling..css" />
                         <URL value="@../styleSheet/selling..css" />
                      </stylesheets>
                   </Label>
-                  <RadioButton fx:id="Mlutman" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="لوتس+مانجا">
+                  <RadioButton fx:id="Knap" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="نابلسية">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="fn-32" />
@@ -46,119 +306,7 @@
                         <ToggleGroup fx:id="type" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="Mfrt" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="مدلعة فواكه " toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Mfor" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="فور سيزون" toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="button-container-mouse-moved" />
-                  <String fx:value="button-container-selected" />
-               </styleClass>
-            </VBox>
-            <VBox prefHeight="448.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css">
-               <children>
-                  <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="فورم ">
-                     <styleClass>
-                        <String fx:value="back-transparent" />
-                        <String fx:value="fill-gray" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="txt-center" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                     <stylesheets>
-                        <URL value="@../styleSheet/selling..css" />
-                        <URL value="@../styleSheet/selling..css" />
-                     </stylesheets>
-                  </Label>
-                  <RadioButton fx:id="Flut" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="لوتس" toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Fmed" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مدلعة " toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Fcon" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="كونو" toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Fman" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مانجا " toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Fnap" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="نابلسية" toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-                  <RadioButton fx:id="Fcrm" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="كريمة " toggleGroup="$type">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </RadioButton>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-               <styleClass>
-                  <String fx:value="shadow" />
-                  <String fx:value="button-container-mouse-moved" />
-                  <String fx:value="button-container-selected" />
-               </styleClass>
-            </VBox>
-            <VBox prefHeight="419.0" prefWidth="222.0" stylesheets="@../styleSheet/selling..css">
-               <children>
-                  <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="كنافة كلاسيك">
-                     <styleClass>
-                        <String fx:value="back-transparent" />
-                        <String fx:value="fill-gray" />
-                        <String fx:value="fn-32" />
-                        <String fx:value="txt-center" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                     <stylesheets>
-                        <URL value="@../styleSheet/selling..css" />
-                        <URL value="@../styleSheet/selling..css" />
-                     </stylesheets>
-                  </Label>
-                  <RadioButton fx:id="Knap" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="نابلسية" toggleGroup="$type">
+                  <RadioButton fx:id="Kben" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="بين نارين" toggleGroup="$type">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="fn-32" />
@@ -173,6 +321,13 @@
                      </styleClass>
                   </RadioButton>
                   <RadioButton fx:id="Kmks" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="مكسرات سوبر " toggleGroup="$type">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </RadioButton>
+                  <RadioButton fx:id="Kcon" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="كونو" toggleGroup="$type">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="fn-32" />
@@ -214,182 +369,462 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </RadioButton>
+                  <RadioButton fx:id="Ksad" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="سادة" toggleGroup="$type">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </RadioButton>
+                  <RadioButton fx:id="Kmix" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مشكل" toggleGroup="$type">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </RadioButton>
                </children>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="button-container-mouse-moved" />
                   <String fx:value="button-container-selected" />
                </styleClass>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
             </VBox>
-            <TableView fx:id="sellingTable" prefHeight="243.0" prefWidth="620.0" stylesheets="@../styleSheet/selling..css">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
-         </children>
-      </HBox>
-      <HBox layoutX="240.0" layoutY="530.0" prefHeight="0.0" prefWidth="0.0" />
-      <VBox layoutX="635.0" layoutY="465.0" prefHeight="178.0" prefWidth="111.0">
-         <children>
-            <Button fx:id="qrtKilo" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="ربع كيلو">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass>
-            </Button>
-            <Button fx:id="halfKilo" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="نصف كيلو">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass>
-            </Button>
-            <Button fx:id="kilo" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="كيلو">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass></Button>
-            <VBox prefHeight="45.0" prefWidth="101.0">
+            <HBox prefHeight="226.0" prefWidth="209.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <VBox prefHeight="188.0" prefWidth="124.0">
                      <children>
-                        <Button fx:id="gram" mnemonicParsing="false" prefHeight="49.0" prefWidth="59.0" stylesheets="@../styleSheet/selling..css" text="جرام">
+                        <Button fx:id="piece" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonOnePiece" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="قطعة">
                            <styleClass>
                               <String fx:value="hover-hand" />
                               <String fx:value="hover-gray" />
-                           </styleClass></Button>
-                        <TextField fx:id="gramno" prefHeight="54.0" prefWidth="58.0" promptText="عدد جم" styleClass="card" stylesheets="@../styleSheet/selling..css" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="twoPieces" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonTwoPieces" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="قطعتين">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="threePieces" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonThreePieces" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="3 قطع">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                        <HBox prefHeight="50.0" prefWidth="129.0">
+                           <children>
+                              <TextField fx:id="piecesno" prefHeight="53.0" prefWidth="102.0" promptText="عدد قطع" styleClass="card" stylesheets="@../styleSheet/selling..css">
+                                 <font>
+                                    <Font name="Arial Black" size="24.0" />
+                                 </font></TextField>
+                           </children>
+                        </HBox>
+                        <Button fx:id="pieces" mnemonicParsing="false" onAction="#buttonPiecesEnter" prefHeight="44.0" prefWidth="116.0" stylesheets="@../styleSheet/selling..css" text="قطع">
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="124.0">
+                     <children>
+                        <Button fx:id="qrtKilo" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonQuar" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="ربع ">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="halfKilo" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonHalf" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="نصف ">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="kilo" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonKilo" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="كيلو">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                        <VBox prefHeight="45.0" prefWidth="101.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="gramno" prefHeight="53.0" prefWidth="102.0" promptText="عدد جم" styleClass="card" stylesheets="@../styleSheet/selling..css">
+                                       <font>
+                                          <Font name="Arial Black" size="24.0" />
+                                       </font></TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Button fx:id="gram" mnemonicParsing="false" onAction="#buttonKiloEnter" prefHeight="44.0" prefWidth="107.0" stylesheets="@../styleSheet/selling..css" text="جرام">
+                           <styleClass>
+                              <String fx:value="hover-hand" />
+                              <String fx:value="hover-gray" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="168.0" layoutY="-6.0" prefHeight="518.0" prefWidth="505.0">
+         <children>
+            <HBox prefHeight="372.0" prefWidth="505.0">
+               <children>
+                  <VBox prefHeight="494.0" prefWidth="203.0" stylesheets="@../styleSheet/selling..css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="فورم ">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <stylesheets>
+                              <URL value="@../styleSheet/selling..css" />
+                              <URL value="@../styleSheet/selling..css" />
+                           </stylesheets>
+                        </Label>
+                        <RadioButton fx:id="Flut" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="لوتس">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="type3" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="Fmed" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مدلعة " toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Fnap" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="نابلسية" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Fnut" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="نوتيلا" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Fben" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="بين نارين" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Fcrm" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="كريمة " toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                     </children>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="button-container-mouse-moved" />
+                        <String fx:value="button-container-selected" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="494.0" prefWidth="179.0" stylesheets="@../styleSheet/selling..css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="كوب">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <stylesheets>
+                              <URL value="@../styleSheet/selling..css" />
+                              <URL value="@../styleSheet/selling..css" />
+                           </stylesheets>
+                        </Label>
+                        <RadioButton fx:id="Cman" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مانجا" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Cnut" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="نوتيلا" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Cmed" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مدلعة " toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Clut" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="لوتس" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <RadioButton fx:id="Cbom" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="قنبلة" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                     </children>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="button-container-mouse-moved" />
+                        <String fx:value="button-container-selected" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="461.0" prefWidth="209.0" stylesheets="@../styleSheet/selling..css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="ميكسات ">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <stylesheets>
+                              <URL value="@../styleSheet/selling..css" />
+                              <URL value="@../styleSheet/selling..css" />
+                           </stylesheets>
+                        </Label>
+                        <RadioButton fx:id="Mmanmed" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="مانجا+مدلعه" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="Mnutman" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="نوتيلا+مانجا" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="Mlutman" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="لوتس+مانجا" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="Mmedfrt" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="مدلعة فواكه " toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="Mfor" mnemonicParsing="false" prefHeight="30.0" prefWidth="201.0" stylesheets="@../styleSheet/selling..css" text="فور سيزون" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="Mturlutman" mnemonicParsing="false" prefHeight="80.0" prefWidth="175.0" stylesheets="@../styleSheet/selling..css" text="تورتة لوتس+مانجا" textAlignment="CENTER" toggleGroup="$type3" wrapText="true">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="button-container-mouse-moved" />
+                        <String fx:value="button-container-selected" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="147.0" prefWidth="505.0">
+               <children>
+                  <HBox prefHeight="94.0" prefWidth="250.0">
+                     <children>
+                        <Button fx:id="Mmid" mnemonicParsing="false" onAction="#buttonMediumEnter" prefHeight="78.0" prefWidth="256.0" stylesheets="@../styleSheet/selling..css" text="وسط">
+                           <styleClass>
+                              <String fx:value="hover-gray" />
+                              <String fx:value="hover-hand" />
+                           </styleClass>
+                        </Button>
+                        <TextField fx:id="midno" alignment="CENTER" prefHeight="73.0" prefWidth="295.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font></TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="505.0">
+                     <children>
+                        <Button fx:id="Mbig" mnemonicParsing="false" onAction="#buttonBigEnter" prefHeight="63.0" prefWidth="260.0" stylesheets="@../styleSheet/selling..css" text="كبير">
+                           <styleClass>
+                              <String fx:value="hover-gray" />
+                              <String fx:value="hover-hand" />
+                           </styleClass>
+                        </Button>
+                        <TextField fx:id="bigno" alignment="CENTER" prefHeight="61.0" prefWidth="285.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font></TextField>
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="513.0" layoutY="467.0" prefHeight="198.0" prefWidth="111.0">
+      <VBox layoutX="176.0" layoutY="516.0" prefHeight="157.0" prefWidth="220.0">
          <children>
-            <Button fx:id="piece" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="قطعة">
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass>
-            </Button>
-            <Button fx:id="twoPieces" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="قطعتين">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass></Button>
-            <Button fx:id="threePieces" contentDisplay="TOP" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" stylesheets="@../styleSheet/selling..css" text="ثلاث قطع">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass></Button>
-            <HBox prefHeight="48.0" prefWidth="112.0">
+            <HBox prefHeight="102.0" prefWidth="277.0">
                <children>
-                  <Button fx:id="pieces" mnemonicParsing="false" prefHeight="56.0" prefWidth="86.0" stylesheets="@../styleSheet/selling..css" text="قطع">
-                     <styleClass>
-                        <String fx:value="hover-hand" />
-                        <String fx:value="hover-gray" />
-                     </styleClass></Button>
-                  <TextField fx:id="piecesno" prefHeight="57.0" prefWidth="79.0" promptText="عدد قطع" styleClass="card" stylesheets="@../styleSheet/selling..css" />
+                  <VBox prefHeight="95.0" prefWidth="124.0">
+                     <children>
+                        <TextField fx:id="Ediscno" prefHeight="57.0" prefWidth="91.0" promptText="--جم" styleClass="card" stylesheets="@../styleSheet/selling..css">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font></TextField>
+                        <TextField fx:id="Ediscratio" prefHeight="57.0" prefWidth="91.0" promptText="....%" styleClass="card" stylesheets="@../styleSheet/selling..css">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font></TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="92.0" prefWidth="100.0">
+                     <children>
+                        <RadioButton fx:id="Cdiscno" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="خصم">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="type7" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="Cdiscratio" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" stylesheets="@../styleSheet/selling..css" text="نسبة" toggleGroup="$type7">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
+            <HBox prefHeight="52.0" prefWidth="220.0">
+               <children>
+                  <Pane prefHeight="59.0" prefWidth="104.0" />
+                  <RadioButton fx:id="Free" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="159.0" stylesheets="@../styleSheet/selling..css" text="هدية" toggleGroup="$type7">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </RadioButton>
+               </children>
+            </HBox>
+            <CheckBox fx:id="Orderdisc" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" styleClass="button" stylesheets="@../styleSheet/selling..css" text="علي الاوردر كامل" />
          </children>
       </VBox>
-      <VBox layoutX="260.0" layoutY="465.0" prefHeight="178.0" prefWidth="230.0">
-         <children>
-            <HBox prefHeight="94.0" prefWidth="250.0">
-               <children>
-                  <Button fx:id="Fmid" mnemonicParsing="false" prefHeight="78.0" prefWidth="103.0" stylesheets="@../styleSheet/selling..css" text="وسط">
-                     <styleClass>
-                        <String fx:value="hover-gray" />
-                        <String fx:value="hover-hand" />
-                     </styleClass></Button>
-                  <TextField fx:id="Fmidno" alignment="CENTER" prefHeight="73.0" prefWidth="133.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1" />
-               </children>
-            </HBox>
-            <HBox prefHeight="84.0" prefWidth="230.0">
-               <children>
-                  <Button fx:id="Fbig" mnemonicParsing="false" prefHeight="63.0" prefWidth="103.0" stylesheets="@../styleSheet/selling..css" text="كبير">
-                     <styleClass>
-                        <String fx:value="hover-gray" />
-                        <String fx:value="hover-hand" />
-                     </styleClass></Button>
-                  <TextField fx:id="Fbigno" alignment="CENTER" prefHeight="61.0" prefWidth="133.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <VBox layoutX="14.0" layoutY="465.0" prefHeight="178.0" prefWidth="230.0">
-         <children>
-            <HBox prefHeight="94.0" prefWidth="250.0">
-               <children>
-                  <Button fx:id="Mmid" mnemonicParsing="false" prefHeight="78.0" prefWidth="103.0" stylesheets="@../styleSheet/selling..css" text="وسط">
-                     <styleClass>
-                        <String fx:value="hover-gray" />
-                        <String fx:value="hover-hand" />
-                     </styleClass></Button>
-                  <TextField fx:id="Mmidno" alignment="CENTER" prefHeight="73.0" prefWidth="133.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1" />
-               </children>
-            </HBox>
-            <HBox prefHeight="82.0" prefWidth="235.0">
-               <children>
-                  <Button fx:id="Mbig" mnemonicParsing="false" prefHeight="63.0" prefWidth="103.0" stylesheets="@../styleSheet/selling..css" text="كبير">
-                     <styleClass>
-                        <String fx:value="hover-gray" />
-                        <String fx:value="hover-hand" />
-                     </styleClass></Button>
-                  <TextField fx:id="Mbigno" alignment="CENTER" prefHeight="61.0" prefWidth="133.0" styleClass="card" stylesheets="@../styleSheet/selling..css" text="1" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <HBox layoutX="290.0" layoutY="611.0" />
-      <Button fx:id="addOne" layoutX="516.0" layoutY="667.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="216.0" stylesheets="@../styleSheet/selling..css" text="اضافة">
-         <styleClass>
-            <String fx:value="hover-hand" />
-            <String fx:value="hover-gray" />
-         </styleClass></Button>
-      <Label alignment="CENTER" layoutX="263.0" layoutY="639.0" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="السعر">
-         <styleClass>
-            <String fx:value="back-transparent" />
-            <String fx:value="fill-gray" />
-            <String fx:value="fn-32" />
-            <String fx:value="txt-center" />
-            <String fx:value="shadow" />
-         </styleClass>
-         <stylesheets>
-            <URL value="@../styleSheet/selling..css" />
-            <URL value="@../styleSheet/selling..css" />
-         </stylesheets>
-      </Label>
-      <TextField fx:id="onePrice" alignment="CENTER" layoutX="26.0" layoutY="645.0" prefHeight="45.0" prefWidth="210.0" promptText="سعر الطلب" stylesheets="@../styleSheet/selling..css">
-         <styleClass>
-            <String fx:value="txt-center" />
-            <String fx:value="card" />
-         </styleClass></TextField>
-      <VBox layoutX="820.0" layoutY="468.0" prefHeight="215.0" prefWidth="500.0">
+      <VBox layoutX="913.0" layoutY="542.0" prefHeight="163.0" prefWidth="375.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="change" mnemonicParsing="false" prefHeight="49.0" prefWidth="189.0" stylesheets="@../styleSheet/selling..css" text="تعديل">
+                  <Button fx:id="change" mnemonicParsing="false" onAction="#dropTableRow" prefHeight="49.0" prefWidth="189.0" stylesheets="@../styleSheet/selling..css" text="تعديل">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -398,7 +833,7 @@
                         <String fx:value="hover-gray" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="clearAll" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="41.0" prefWidth="139.0" stylesheets="@../styleSheet/selling..css" text="حذف الكل" textFill="#b90e0e">
+                  <Button fx:id="clearAll" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#clearAllData" prefHeight="44.0" prefWidth="198.0" stylesheets="@../styleSheet/selling..css" text="حذف الكل" textFill="#b90e0e">
                      <HBox.margin>
                         <Insets bottom="10.0" left="130.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -409,7 +844,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="print" mnemonicParsing="false" onAction="#setPrint" prefHeight="75.0" prefWidth="610.0" stylesheets="@../styleSheet/selling..css" text="طباعة">
+            <Button fx:id="print" mnemonicParsing="false" prefHeight="75.0" prefWidth="610.0" stylesheets="@../styleSheet/selling..css" text="طباعة" textFill="#1cda32">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
