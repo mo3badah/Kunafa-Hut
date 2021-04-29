@@ -22,7 +22,6 @@ public class printing {
         try(OutputStream os = serialPort.getOutputStream()) {
             // select double width and height font
             os.write(new byte[] {0x1b, 0x21, 0x31});
-
             os.write("       كنافة هت\n".getBytes());
             os.write("   العاشر \n".getBytes());
             os.write("      New York, NY\n".getBytes());

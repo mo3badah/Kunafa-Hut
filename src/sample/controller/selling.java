@@ -135,7 +135,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+            kilo = Double.valueOf(dbResSell.getString("big"));
         }
         Ono = .25;
         Oquantity = "كيلو";
@@ -158,7 +158,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+            kilo = Double.valueOf(dbResSell.getString("big"));
         }
         Ono = .5;
         Oquantity = "كيلو";
@@ -183,7 +183,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+            kilo = Double.valueOf(dbResSell.getString("big"));
         }
         Ono = 1.0;
         Oquantity = "كيلو";
@@ -218,7 +218,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+            kilo = Double.valueOf(dbResSell.getString("big"));
         }
         Ono = gramenter/1000;
         Oquantity = "كيلو";
@@ -241,7 +241,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            piece = Double.valueOf(dbResSell.getString("piece/medium"));
+            piece = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = 1.0;
         Oquantity = "قطعة";
@@ -264,7 +264,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            piece = Double.valueOf(dbResSell.getString("piece/medium"));
+            piece = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = 2.0;
         Oquantity = "قطعة";
@@ -289,7 +289,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            piece = Double.valueOf(dbResSell.getString("piece/medium"));
+            piece = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = 3.0;
         Oquantity = "قطعة";
@@ -324,7 +324,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            piece = Double.valueOf(dbResSell.getString("piece/medium"));
+            piece = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "قطعة";
@@ -370,7 +370,7 @@ public class selling implements Initializable {
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oname = dbResSell.getString("name");
-                kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+                kilo = Double.valueOf(dbResSell.getString("medium"));
             }
 
             if (Otype.equals("كوب")) {
@@ -421,7 +421,7 @@ public class selling implements Initializable {
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oname = dbResSell.getString("name");
-                kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+                kilo = Double.valueOf(dbResSell.getString("big"));
             }
             Ono = piecesenter;
             if (Otype.equals("كوب")) {
@@ -453,7 +453,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -478,7 +478,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -503,7 +503,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -528,7 +528,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -553,7 +553,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -578,7 +578,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -603,7 +603,7 @@ public class selling implements Initializable {
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            kilo = Double.valueOf(dbResSell.getString("medium"));
         }
         Ono = piecesenter;
         Oquantity = "";
@@ -703,7 +703,6 @@ public class selling implements Initializable {
             String sqlscript = "DELETE FROM `kunafahut`.`preorder` WHERE `rowNo` ="+typed+"";
             try {
                 initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
-                System.out.println("updated successfully!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -774,7 +773,7 @@ public class selling implements Initializable {
         sellingTable.setItems(oblist);
     }
 
-    public Statement initializeDB(String dburl,String dbuser,String dbpass) throws SQLException {
+    public static Statement initializeDB(String dburl, String dbuser, String dbpass) throws SQLException {
         // DB parameters
         Connection dbconn = null;
         try {

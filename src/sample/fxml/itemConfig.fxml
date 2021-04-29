@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="522.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.itemConfig">
+   <children>
+      <HBox prefHeight="616.0" prefWidth="1200.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <VBox layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="600.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="635.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/itemConfig.css" text="المضافة حديثاً">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </Label>
+                        <TableView fx:id="itemTabel2" prefHeight="435.0" prefWidth="600.0" stylesheets="@../styleSheet/userConfig.css">
+                           <columns>
+                              <TableColumn fx:id="Tbig2" prefWidth="108.0" text="سعر الكبير" />
+                              <TableColumn fx:id="Tbigname2" prefWidth="90.0" text="اسم الكبير" />
+                              <TableColumn fx:id="Tmedium2" prefWidth="110.0" text="سعر الوسط" />
+                              <TableColumn fx:id="TmediumName2" prefWidth="84.0" text="اسم الوسط" />
+                              <TableColumn fx:id="Tname2" prefWidth="105.0" text="الاسم" />
+                              <TableColumn fx:id="Ttype2" prefWidth="102.0" text="النوع" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="card" />
+                              <String fx:value="fn-14" />
+                           </styleClass>
+                        </TableView>
+                        <HBox prefHeight="87.0" prefWidth="600.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" stylesheets="@../styleSheet/itemConfig.css" text="إضافة">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arabic Typesetting" size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" stylesheets="@../styleSheet/itemConfig.css" text="تعديل">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arabic Typesetting" size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" stylesheets="@../styleSheet/itemConfig.css" text="حذف">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arabic Typesetting" size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="126.0" prefWidth="462.0">
+                                 <children>
+                                    <TextField fx:id="insType2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="اسم العميل" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insName2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="رقم التليفون" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insMediumName2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="الرقم السري" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="105.0" prefWidth="181.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="النوع">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="الاسم">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="اسم الوسط">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="126.0" prefWidth="462.0">
+                                 <children>
+                                    <TextField fx:id="insMedium2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="اسم العميل" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insBigName2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="رقم التليفون" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insBig2" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="الرقم السري" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="105.0" prefWidth="181.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="سعر الوسط">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="اسم الكبير">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="سعر الكبير">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <VBox layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="600.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="635.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/itemConfig.css" text="الانواع">
+                           <styleClass>
+                              <String fx:value="back-transparent" />
+                              <String fx:value="fill-gray" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="txt-center" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </Label>
+                        <TableView fx:id="itemTabel1" prefHeight="423.0" prefWidth="600.0" stylesheets="@../styleSheet/itemConfig.css">
+                           <columns>
+                              <TableColumn fx:id="Tbig1" prefWidth="153.0" text="الكيلو/الكبير" />
+                              <TableColumn fx:id="Tmedium1" prefWidth="145.0" text="القطعة/الوسط" />
+                              <TableColumn fx:id="Tname1" minWidth="0.0" prefWidth="167.0" text="الاسم" />
+                              <TableColumn fx:id="Ttype1" prefWidth="134.0" text="النوع" />
+                           </columns>
+                           <styleClass>
+                              <String fx:value="card" />
+                              <String fx:value="fn-14" />
+                           </styleClass>
+                        </TableView>
+                        <HBox prefHeight="87.0" prefWidth="600.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="593.0" stylesheets="@../styleSheet/itemConfig.css" text="تعديل">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arabic Typesetting" size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="117.0" prefWidth="600.0">
+                           <children>
+                              <VBox prefHeight="126.0" prefWidth="462.0">
+                                 <children>
+                                    <TextField fx:id="insType1" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="اسم العميل" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insName1" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="رقم التليفون" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insMedium1" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="الرقم السري" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="insBig1" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="الرقم السري" stylesheets="@../styleSheet/itemConfig.css">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                       </styleClass>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="105.0" prefWidth="181.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="النوع">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="الاسم">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="القطعة/الوسط">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/itemConfig.css" text="الكيلو/الكبير">
+                                       <styleClass>
+                                          <String fx:value="back-transparent" />
+                                          <String fx:value="fill-gray" />
+                                          <String fx:value="txt-center" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="card" />
+                                          <String fx:value="margin1" />
+                                          <String fx:value="fn-32" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
