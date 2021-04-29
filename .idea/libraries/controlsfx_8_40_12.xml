@@ -5,6 +5,7 @@
       <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-8.9.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jfoenix-8.0.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.11.jar!/" />
+      <root url="jar://D:/java/rxtx-2.2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

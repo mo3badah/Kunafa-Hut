@@ -1,8 +1,12 @@
 package sample.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
@@ -16,6 +20,7 @@ import java.util.ResourceBundle;
 import java.sql.*;
 
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 
 public class signIn implements Initializable {
@@ -71,6 +76,19 @@ public class signIn implements Initializable {
             if (userName.getText().equals(databaseUsername) && password.getText().equals(databasePassword)) {
                 loginText.setText("Congratulation you had already signed in");
                 loginText.setTextFill(Color.GREEN);
+                selling.setCashierName(databaseUsername);
+                try {
+                    Parent userview = FXMLLoader.load(getClass().getResource("../fxml/selling.fxml"));
+                    Scene userscene = new Scene(userview);
+                    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(userscene);
+                    window.show();
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                    e.getCause();
+                }
+
             } else {
                 loginText.setText("Please try again");
                 loginText.setTextFill(Color.RED);
@@ -82,6 +100,7 @@ public class signIn implements Initializable {
             e.getCause();
         }
     }
+
     public void initializeDB(String dburl,String dbuser,String dbpass) {
         // DB parameters
         Connection dbconn;

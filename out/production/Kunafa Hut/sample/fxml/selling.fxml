@@ -5,6 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -632,6 +633,14 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </RadioButton>
+                        <RadioButton fx:id="added" mnemonicParsing="false" prefHeight="21.0" prefWidth="144.0" stylesheets="@../styleSheet/selling..css" text="اخري" toggleGroup="$type3">
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="fn-32" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </RadioButton>
+                        <ChoiceBox fx:id="comboNew" prefHeight="51.0" prefWidth="545.0" />
                      </children>
                      <styleClass>
                         <String fx:value="shadow" />
@@ -844,15 +853,25 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="print" mnemonicParsing="false" prefHeight="75.0" prefWidth="610.0" stylesheets="@../styleSheet/selling..css" text="طباعة" textFill="#1cda32">
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </VBox.margin>
-               <styleClass>
-                  <String fx:value="hover-hand" />
-                  <String fx:value="hover-gray" />
-               </styleClass>
-            </Button>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="printing2" mnemonicParsing="false" onAction="#printing2" prefHeight="75.0" prefWidth="327.0" stylesheets="@../styleSheet/selling..css" text="طباعة" textFill="#1cda32">
+                     <styleClass>
+                        <String fx:value="hover-hand" />
+                        <String fx:value="hover-gray" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="printing1" mnemonicParsing="false" onAction="#printing1" prefHeight="49.0" prefWidth="189.0" stylesheets="@../styleSheet/selling..css" text="محل">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="hover-hand" />
+                        <String fx:value="hover-gray" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

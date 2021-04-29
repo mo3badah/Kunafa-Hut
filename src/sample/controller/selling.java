@@ -3,17 +3,45 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import sample.Main;
 
 import java.net.URL;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.Observable;
 import java.util.ResourceBundle;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class selling implements Initializable {
+    public static int getIdgenerate() {
+        return idgenerate;
+    }
+
+    public static void setIdgenerate(int idgenerate) {
+        selling.idgenerate = idgenerate;
+    }
+
+    public static int idgenerate;
+
+    public static String getCashierName() {
+        return cashierName;
+    }
+
+    public static void setCashierName(String cashierName) {
+        selling.cashierName = cashierName;
+    }
+
+    public static String cashierName = "admin";
+
     @FXML
     private ToggleGroup type;
     @FXML
@@ -37,6 +65,8 @@ public class selling implements Initializable {
     @FXML
     private TextField Ediscno;
     @FXML
+    private CheckBox Orderdisc;
+    @FXML
     private TableView<moderTabel> sellingTable;
     @FXML
     private TableColumn<moderTabel,String> Ttype;
@@ -57,6 +87,8 @@ public class selling implements Initializable {
     private TextField TallTotal;
     @FXML
     private TextField TallDisc;
+    @FXML
+    private ChoiceBox comboNew;
 
 
     // The main data variables
@@ -75,9 +107,11 @@ public class selling implements Initializable {
 
 
     private ResultSet dbResSell;
+    private Main main;
 
     public void initialize(URL location, ResourceBundle resources) {
         setSellingTable();
+        initializeCombo();
     }
     public String checkKlasicTypes(ToggleGroup x){
         RadioButton selectedRadioButton = (RadioButton) x.getSelectedToggle();
@@ -300,13 +334,12 @@ public class selling implements Initializable {
 
     // Form, Cups and Mix Buttons
     public void buttonMediumEnter(javafx.event.ActionEvent actionEvent) throws SQLException {
-        Double kilo = 0.0 ;
-        Double piecesenter = 1.0 ;
+        Double kilo = 0.0;
+        Double piecesenter = 1.0;
         String typeId = null;
         try {
             piecesenter = Double.valueOf(midno.getText());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             String selection = "من فضلك ادخل عدد القطع صحيح اولاً ";
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
@@ -314,27 +347,43 @@ public class selling implements Initializable {
 
         try {
             typeId = checkKlasicTypes(type3);
-        }catch (Exception e){
+        } catch (Exception e) {
             String selection = "من فضلك ادخل النوع اولاً ";
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }
-        String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
-        while (dbResSell.next()) {
-            Otype = dbResSell.getString("type");
-            Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+        if (typeId.equals("added")) {
+            Oname = (String) comboNew.getValue();
+            String sqlscript = "SELECT * from kunafahut.added where name = '" + Oname + "'";
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResSell.next()) {
+                Otype = dbResSell.getString("type");
+                Oquantity = dbResSell.getString("mediumName");
+                kilo = Double.valueOf(dbResSell.getString("mediumPrice"));
+            }
+
+
+        } else {
+
+            String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResSell.next()) {
+                Otype = dbResSell.getString("type");
+                Oname = dbResSell.getString("name");
+                kilo = Double.valueOf(dbResSell.getString("piece/medium"));
+            }
+
+            if (Otype.equals("كوب")) {
+                Oquantity = "صغير";
+            } else {
+                Oquantity = "وسط";
+            }
         }
-        Ono = piecesenter;
-        if (Otype.equals("كوب")){
-            Oquantity = "صغير";
-        }else {
-            Oquantity = "وسط";
+            Ono = piecesenter;
+            Oprice = kilo * piecesenter;
+            onePrice.setText(String.valueOf(Oprice));
         }
-        Oprice = kilo*piecesenter;
-        onePrice.setText(String.valueOf(Oprice));
-    }
+
 
     public void buttonBigEnter(javafx.event.ActionEvent actionEvent) throws SQLException {
         Double kilo = 0.0 ;
@@ -356,19 +405,32 @@ public class selling implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }
-        String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
-        while (dbResSell.next()) {
-            Otype = dbResSell.getString("type");
-            Oname = dbResSell.getString("name");
-            kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+        if (typeId.equals("added")) {
+            Oname = (String) comboNew.getValue();
+            String sqlscript = "SELECT * from kunafahut.added where name = '" + Oname + "'";
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResSell.next()) {
+                Otype = dbResSell.getString("type");
+                Oquantity = dbResSell.getString("bigName");
+                kilo = Double.valueOf(dbResSell.getString("bigPrice"));
+            }
+        }
+        else {
+            String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResSell.next()) {
+                Otype = dbResSell.getString("type");
+                Oname = dbResSell.getString("name");
+                kilo = Double.valueOf(dbResSell.getString("kilo/big"));
+            }
+            Ono = piecesenter;
+            if (Otype.equals("كوب")) {
+                Oquantity = "وسط";
+            } else {
+                Oquantity = "كبير";
+            }
         }
         Ono = piecesenter;
-        if (Otype.equals("كوب")){
-            Oquantity = "وسط";
-        }else {
-            Oquantity = "كبير";
-        }
         Oprice = kilo*piecesenter;
         onePrice.setText(String.valueOf(Oprice));
     }
@@ -655,6 +717,9 @@ public class selling implements Initializable {
     }
 
     public void clearAllData(javafx.event.ActionEvent actionEvent){
+        clearAllData();
+    }
+    public void clearAllData(){
         // clear table data
         String sqlscript = "DELETE FROM `kunafahut`.`preorder`";
         try {
@@ -709,7 +774,6 @@ public class selling implements Initializable {
         sellingTable.setItems(oblist);
     }
 
-
     public Statement initializeDB(String dburl,String dbuser,String dbpass) throws SQLException {
         // DB parameters
         Connection dbconn = null;
@@ -724,6 +788,94 @@ public class selling implements Initializable {
         return dbconn.createStatement();
 
     }
+    public void initializeCombo(){
+        String sqlscript2 = "SELECT * FROM added ;";
+        try {
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript2);
+            while (dbResGetId.next()){
+
+                comboNew.getItems().addAll(dbResGetId.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void printing2(javafx.event.ActionEvent actionEvent){
+        try {
+            printing();
+            Parent userview = FXMLLoader.load(getClass().getResource("../fxml/userdata.fxml"));
+            Scene userscene = new Scene(userview);
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(userscene);
+            window.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    public void printing1(javafx.event.ActionEvent actionEvent){
+        printing();
+        userdata.bill();
+    }
+
+
+    public void printing(){
+        // generating
+        setIdgenerate();
+        // set ordet disc
+        Double price = allTotal+allDisc;
+        if (Orderdisc.isSelected()){
+            Double x;
+            x = returnDisc(allTotal);
+            allDisc += allTotal-x;
+            allTotal = x;
+            price = allTotal+allDisc;
+        }
+        // coping data to another Field
+        String sendOrderData = "insert into ordersdata (orderNo, type, name, no, quantity, price, disc, netPrice)\n" +
+                "select ("+idgenerate+"), type, name, no, quantity, price, disc, netPrice from preorder;";
+        String sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation )\n" +
+                "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,"+allTotal+",'',0,'');";
+
+        try {
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderData);
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+        clearAllData();
+    }
+
+    public void setIdgenerate(){
+        // coping data to another Field
+        String sqlscript = "SELECT orderNo FROM orderdetails ORDER BY orderNo DESC LIMIT 1;";
+        int getId=0;
+        try {
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResGetId.next()){
+                getId = (int) dbResGetId.getDouble("orderNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String lastGetId;
+        Date dNow = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMdd");
+        String datetime = ft.format(dNow);
+        lastGetId = String.valueOf(getId).substring(0,6);
+        if (lastGetId.equals(datetime)){
+            idgenerate = getId+1;
+        }else {
+            idgenerate = Integer.valueOf(datetime+"001");
+        }
+    }
+
+
+
 
 
 

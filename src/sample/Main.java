@@ -2,23 +2,32 @@ package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.EventObject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main extends Application {
+    Stage primarystage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/selling.fxml"));
-        primaryStage.setTitle("كنافة هت");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        primarystage = primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/signIn.fxml"));
+        primarystage.setTitle("كنافة هت");
+        primarystage.setScene(new Scene(root));
+        primarystage.show();
+
     }
 
 
@@ -28,18 +37,17 @@ public class Main extends Application {
 
     }
     public void userData(){
-        try {
-            Stage userDataStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("fxml/userdata.fxml"));
-            userDataStage.setTitle("كنافة هت");
-            userDataStage.setScene(new Scene(root));
-            userDataStage.show();
 
 
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
+
+    }
+    public static void showuserdata() throws IOException {
+        FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(Main.class.getResource("fxml/signIn.fxml"));
+        BorderPane userdata = loader.load();
+        Stage userdatastage;
+
+
 
     }
     public void initializeDB(String dburl,String dbuser,String dbpass) {
@@ -57,4 +65,5 @@ public class Main extends Application {
         }
 
     }
+
 }
