@@ -7,25 +7,40 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userConfig">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userConfig">
    <children>
       <VBox layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="424.0" prefWidth="600.0">
          <children>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="635.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/userConfig.css" text="تعديل معلومات المستخدمين">
-               <styleClass>
-                  <String fx:value="back-transparent" />
-                  <String fx:value="fill-gray" />
-                  <String fx:value="fn-32" />
-                  <String fx:value="txt-center" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </Label>
+            <HBox prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="59.0" prefWidth="149.0" text="القائمة الرئيسة">
+                     <graphic>
+                        <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/icons8-exit-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="455.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/userConfig.css" text="تعديل معلومات المستخدمين">
+                     <styleClass>
+                        <String fx:value="back-transparent" />
+                        <String fx:value="fill-gray" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="txt-center" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </HBox>
             <TableView fx:id="usersTable" prefHeight="203.0" prefWidth="587.0" stylesheets="@../styleSheet/userConfig.css">
                <columns>
                   <TableColumn fx:id="Ttime" prefWidth="199.0" text="تاريخ الانشاء" />

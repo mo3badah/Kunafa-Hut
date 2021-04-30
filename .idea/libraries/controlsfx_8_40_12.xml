@@ -8,6 +8,8 @@
       <root url="jar://D:/java/rxtx-2.2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/rxtx-2.2.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

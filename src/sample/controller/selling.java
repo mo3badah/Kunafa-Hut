@@ -32,6 +32,25 @@ public class selling implements Initializable {
 
     public static int idgenerate;
 
+    public static int getIdmod() {
+        return idmod;
+    }
+
+    public static void setIdmod(int idmod1) {
+        idmod = idmod1;
+    }
+
+    private static int idmod;
+
+    public static boolean isIsmod() {
+        return ismod;
+    }
+
+    public static void setIsmod(boolean ismod1) {
+        ismod = ismod1;
+    }
+
+    private static boolean ismod;
     public static String getCashierName() {
         return cashierName;
     }
@@ -109,9 +128,12 @@ public class selling implements Initializable {
     private ResultSet dbResSell;
     private Main main;
 
+
+
     public void initialize(URL location, ResourceBundle resources) {
         setSellingTable();
         initializeCombo();
+        System.out.println(checkEmpty());
     }
     public String checkKlasicTypes(ToggleGroup x){
         RadioButton selectedRadioButton = (RadioButton) x.getSelectedToggle();
@@ -660,6 +682,7 @@ public class selling implements Initializable {
             System.out.println("updated successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("dosen't updated!");
         }
         sellingTable.getItems().clear();
         setSellingTable();
@@ -718,7 +741,7 @@ public class selling implements Initializable {
     public void clearAllData(javafx.event.ActionEvent actionEvent){
         clearAllData();
     }
-    public void clearAllData(){
+    public  void clearAllData(){
         // clear table data
         String sqlscript = "DELETE FROM `kunafahut`.`preorder`";
         try {
@@ -801,9 +824,41 @@ public class selling implements Initializable {
     }
 
     public void printing2(javafx.event.ActionEvent actionEvent){
-        try {
+        if (checkEmpty()==1){
+            try {
+                printing();
+                Parent userview = FXMLLoader.load(getClass().getResource("../fxml/userdata.fxml"));
+                Scene userscene = new Scene(userview);
+                Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                window.setScene(userscene);
+                window.show();
+
+            }catch (Exception e){
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            String selection = "من فضلك ادخل بيانات الاوردر ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+    }
+    public void printing1(javafx.event.ActionEvent actionEvent){
+        if (checkEmpty()==1){
             printing();
-            Parent userview = FXMLLoader.load(getClass().getResource("../fxml/userdata.fxml"));
+            //userdata.bill();
+        }else {
+            String selection = "من فضلك ادخل بيانات الاوردر ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+    }
+    public void menuPage(javafx.event.ActionEvent actionEvent){
+
+        try {
+            Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/menuPage.fxml"));
             Scene userscene = new Scene(userview);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(userscene);
@@ -813,16 +868,37 @@ public class selling implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+
     }
-    public void printing1(javafx.event.ActionEvent actionEvent){
-        printing();
-        userdata.bill();
+    public int checkEmpty(){
+        int check = 0;
+        try {
+            String sendOrderDetails = "SELECT EXISTS (SELECT 1 FROM preorder);";
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sendOrderDetails);
+            while (dbResGetId.next()){
+
+               check = dbResGetId.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return check;
     }
 
 
     public void printing(){
+
+        int id;
+        String sendOrderDetails;
         // generating
-        setIdgenerate();
+        if (ismod){
+            id=idmod;
+        }
+        else {
+            setIdgenerate();
+            id =idgenerate;
+        }
+
         // set ordet disc
         Double price = allTotal+allDisc;
         if (Orderdisc.isSelected()){
@@ -834,9 +910,14 @@ public class selling implements Initializable {
         }
         // coping data to another Field
         String sendOrderData = "insert into ordersdata (orderNo, type, name, no, quantity, price, disc, netPrice)\n" +
-                "select ("+idgenerate+"), type, name, no, quantity, price, disc, netPrice from preorder;";
-        String sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation )\n" +
-                "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,"+allTotal+",'',0,'');";
+                "select ("+id+"), type, name, no, quantity, price, disc, netPrice from preorder;";
+        if (ismod){
+             sendOrderDetails = "UPDATE orderdetails set cachierName = '"+cashierName+"',orderTime = CURRENT_TIMESTAMP,price = "+price+", totDisc = "+allDisc+", totPrice = "+allTotal+",totNetPrice = totPrice+delivery where orderNo = "+id+";";
+
+        }else {
+             sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation )\n" +
+                    "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,totNetPrice = totPrice+delivery,'',0,'');";
+        }
 
         try {
             initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderData);
@@ -872,11 +953,4 @@ public class selling implements Initializable {
             idgenerate = Integer.valueOf(datetime+"001");
         }
     }
-
-
-
-
-
-
-
 }

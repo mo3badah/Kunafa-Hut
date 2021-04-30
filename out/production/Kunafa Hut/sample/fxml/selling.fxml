@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -109,6 +111,18 @@
       </VBox>
       <VBox layoutY="11.0" prefHeight="676.0" prefWidth="162.0" stylesheets="@../styleSheet/selling..css">
          <children>
+            <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="65.0" prefWidth="182.0" text="القائمة الرئيسة">
+               <graphic>
+                  <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-exit-52.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
             <Label alignment="CENTER" prefHeight="56.0" prefWidth="231.0" style="-fx-background-radius: 50;" text="جديد">
                <styleClass>
                   <String fx:value="back-transparent" />
@@ -719,7 +733,7 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </VBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="Mturlutman" mnemonicParsing="false" prefHeight="80.0" prefWidth="175.0" stylesheets="@../styleSheet/selling..css" text="تورتة لوتس+مانجا" textAlignment="CENTER" toggleGroup="$type3" wrapText="true">
+                        <RadioButton fx:id="MTlutman" mnemonicParsing="false" prefHeight="80.0" prefWidth="175.0" stylesheets="@../styleSheet/selling..css" text="تورتة لوتس+مانجا" textAlignment="CENTER" toggleGroup="$type3" wrapText="true">
                            <styleClass>
                               <String fx:value="shadow" />
                               <String fx:value="fn-32" />

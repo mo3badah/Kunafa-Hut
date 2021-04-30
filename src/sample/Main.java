@@ -19,28 +19,24 @@ import java.util.Date;
 
 public class Main extends Application {
     Stage primarystage;
+    static Parent  root;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         primarystage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/ordersConfig.fxml"));
+         root = FXMLLoader.load(getClass().getResource("fxml/menuPage.fxml"));
         primarystage.setTitle("كنافة هت");
         primarystage.setScene(new Scene(root));
         primarystage.show();
 
     }
 
-
     public static void main(String[] args) {
         launch(args);
 
 
     }
-    public void userData(){
 
-
-
-    }
     public static void showuserdata() throws IOException {
         FXMLLoader loader= new FXMLLoader();
         loader.setLocation(Main.class.getResource("fxml/signIn.fxml"));

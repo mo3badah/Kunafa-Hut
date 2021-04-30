@@ -6,24 +6,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="722.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ordersConfig">
+<AnchorPane prefHeight="722.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ordersConfig">
    <children>
       <VBox layoutX="20.0" layoutY="4.0" prefHeight="715.0" prefWidth="1269.0">
          <children>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="1001.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/ordersConfig.css" text="الاوردرات">
-               <styleClass>
-                  <String fx:value="back-transparent" />
-                  <String fx:value="fill-gray" />
-                  <String fx:value="fn-32" />
-                  <String fx:value="txt-center" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#menuPage" text="القائمة الرئيسة">
+                     <graphic>
+                        <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/icons8-exit-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="1001.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/ordersConfig.css" text="الاوردرات">
+                     <styleClass>
+                        <String fx:value="back-transparent" />
+                        <String fx:value="fill-gray" />
+                        <String fx:value="fn-32" />
+                        <String fx:value="txt-center" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </HBox>
             <TableView fx:id="ordersTable" prefHeight="594.0" prefWidth="1300.0" stylesheets="@../styleSheet/userConfig.css">
                <columns>
                   <TableColumn fx:id="Ttime" prefWidth="108.0" text="وقت الاوردر" />
@@ -45,28 +60,28 @@
             </TableView>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" text="إضافة">
+                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" text="طباعة">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Arabic Typesetting" size="24.0" />
+                        <Font name="Arabic Typesetting" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" text="تعديل">
+                  <Button mnemonicParsing="false" onAction="#editOrder" prefHeight="78.0" prefWidth="256.0" text="تعديل">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Arabic Typesetting" size="24.0" />
+                        <Font name="Arabic Typesetting" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="256.0" text="حذف">
+                  <Button mnemonicParsing="false" onAction="#dropTableRow" prefHeight="78.0" prefWidth="256.0" text="حذف">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Arabic Typesetting" size="24.0" />
+                        <Font name="Arabic Typesetting" size="27.0" />
                      </font>
                   </Button>
                </children>

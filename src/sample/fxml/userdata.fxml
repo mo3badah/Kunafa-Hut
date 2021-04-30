@@ -6,12 +6,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userdata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
+<AnchorPane fx:id="userdata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
    <children>
       <VBox alignment="CENTER" maxWidth="550.0" prefHeight="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,6 +21,15 @@
                <children>
                   <VBox prefHeight="100.0" prefWidth="297.0">
                      <children>
+                        <Button mnemonicParsing="false" onAction="#menuPage" text="القائمة الرئيسة">
+                           <graphic>
+                              <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/icons8-exit-52.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                         <Label alignment="CENTER" prefHeight="41.0" prefWidth="272.0" stylesheets="@../styleSheet/userdata.ss.css" text="التاريخ">
                            <VBox.margin>
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -44,6 +55,15 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="297.0">
                            <children>
+                              <Button mnemonicParsing="false" onAction="#gotoselling" text="الكاشير">
+                                 <graphic>
+                                    <ImageView fx:id="menuPageImage1" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/icons8-back-52.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                               <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="رقم الفاتورة">
                                  <VBox.margin>
                                     <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

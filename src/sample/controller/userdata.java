@@ -98,8 +98,15 @@ public class userdata implements Initializable {
     }
 
     public static void getGenerated() {
+        int id;
+        if (sample.controller.selling.isIsmod()){
+            id= sample.controller.selling.getIdmod();
+        }
+        else {
+            id = sample.controller.selling.getIdgenerate();
+        }
         // coping data to another Field
-        String sqlscript = "SELECT * FROM orderdetails ORDER BY orderNo DESC LIMIT 1;";
+        String sqlscript = "SELECT * FROM orderdetails where  orderNo = "+id+";";
         try {
             ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
             while (dbResGetId.next()){
@@ -120,7 +127,9 @@ public class userdata implements Initializable {
     public void printing2(javafx.event.ActionEvent actionEvent){
         savingNewData();
         bill();
+        /*
         try {
+            selling.setIsmod(false);
             Parent userview = FXMLLoader.load(getClass().getResource("../fxml/selling.fxml"));
             Scene userscene = new Scene(userview);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -131,6 +140,7 @@ public class userdata implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+        */
     }
 
     public void savingNewData(){
@@ -169,10 +179,9 @@ public class userdata implements Initializable {
         return dbconn.createStatement();
 
     }
-
+    static String textbill;
     public static void bill(){
         getGenerated();
-        String textbill;
         textbill ="                          كنافة هت                   "+"\n"+
                 "                        رمضان كريم                     "+"\n"+
                 "=======================================================\n"+
@@ -223,8 +232,7 @@ public class userdata implements Initializable {
                 " العاشر من رمضان - المجاورة السابعة - امام شبكة المياة  "+"\n"+
                 "                          01006318817                    ";
         try {
-
-            textArea.setText(textbill);
+            //textArea.setText(textbill);
             print();
         }catch (Exception e){
             e.getCause();
@@ -234,13 +242,14 @@ public class userdata implements Initializable {
     }
     private static void print() {
 
-        TextFlow printArea = new TextFlow(new Text(textArea.getText()));
+        TextFlow printArea = new TextFlow(new Text(textbill));
 
         PrinterJob printerJob = PrinterJob.createPrinterJob();
 
-        if (printerJob != null && printerJob.showPrintDialog(textArea.getScene().getWindow())) {
+        if (printerJob != null ) {
             PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
             printArea.setMaxWidth(pageLayout.getPrintableWidth());
+
 
             if (printerJob.printPage(printArea)) {
                 printerJob.endJob();
@@ -252,5 +261,36 @@ public class userdata implements Initializable {
             System.out.println("Canceled");
         }
     }
+    public void menuPage(javafx.event.ActionEvent actionEvent){
+
+        try {
+            Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/menuPage.fxml"));
+            Scene userscene = new Scene(userview);
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(userscene);
+            window.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
+    public  void gotoselling(javafx.event.ActionEvent actionEvent){
+        try {
+            Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/selling.fxml"));
+            Scene userscene = new Scene(userview);
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(userscene);
+            window.show();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+    }
+
 
 }
