@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userdata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
+<AnchorPane fx:id="userdata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
    <children>
       <VBox alignment="CENTER" maxWidth="550.0" prefHeight="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -309,7 +309,7 @@
             </HBox>
             <VBox prefHeight="72.0" prefWidth="292.0">
                <children>
-                  <Button fx:id="printing2" mnemonicParsing="false" onAction="#printing2" prefHeight="52.0" prefWidth="578.0" stylesheets="@../styleSheet/userdata.ss.css" text="إطبع">
+                  <Button fx:id="printing2" mnemonicParsing="false" onAction="#printReceipt" prefHeight="52.0" prefWidth="578.0" stylesheets="@../styleSheet/userdata.ss.css" text="إطبع">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

@@ -101,7 +101,6 @@ public class ordersConfig implements Initializable {
             typed = ordersTable.getSelectionModel().getSelectedItem().orderNo;
         }
         return typed;
-
     }
     public void droprowwithid(int typed){
         String sqlscript = "DELETE FROM `kunafahut`.`orderdetails` WHERE `orderNo` ="+typed+"";
@@ -178,7 +177,16 @@ public class ordersConfig implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }
-
+    }
+    public void fastPrint(javafx.event.ActionEvent actionEvent){
+        int id = idnoofselected();
+        if (id!=0){
+            userdata.outprint(id);
+        }else {
+            String selection = "من فضلك حدد الصف المراد تعديلة ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 
 }

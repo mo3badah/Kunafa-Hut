@@ -1,14 +1,16 @@
 package sample.controller;
 
 import com.jfoenix.controls.JFXBadge;
+import com.sun.javafx.print.PrintHelper;
+import com.sun.javafx.print.Units;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.print.PageLayout;
-import javafx.print.PrinterJob;
+import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -22,6 +24,7 @@ import java.util.ResourceBundle;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import sample.controller.selling;
 
@@ -77,7 +80,7 @@ public class userdata implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getGenerated();
+        getGenerated(getOurId());
         setNow.setText(String.valueOf(orderTime));
         setId.setText(String.valueOf(idgenerate));
         TuserName.setText(String.valueOf(username));
@@ -96,8 +99,7 @@ public class userdata implements Initializable {
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
-
-    public static void getGenerated() {
+    public int getOurId(){
         int id;
         if (sample.controller.selling.isIsmod()){
             id= sample.controller.selling.getIdmod();
@@ -105,6 +107,11 @@ public class userdata implements Initializable {
         else {
             id = sample.controller.selling.getIdgenerate();
         }
+        return id;
+    }
+
+    public static void getGenerated(int id) {
+
         // coping data to another Field
         String sqlscript = "SELECT * FROM orderdetails where  orderNo = "+id+";";
         try {
@@ -124,25 +131,6 @@ public class userdata implements Initializable {
             e.printStackTrace();
         }
     }
-    public void printing2(javafx.event.ActionEvent actionEvent){
-        savingNewData();
-        bill();
-        /*
-        try {
-            selling.setIsmod(false);
-            Parent userview = FXMLLoader.load(getClass().getResource("../fxml/selling.fxml"));
-            Scene userscene = new Scene(userview);
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(userscene);
-            window.show();
-
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-        */
-    }
-
     public void savingNewData(){
         try {
             delivery = Integer.parseInt(Tdelivery.getText());
@@ -179,88 +167,7 @@ public class userdata implements Initializable {
         return dbconn.createStatement();
 
     }
-    static String textbill;
-    public static void bill(){
-        getGenerated();
-        textbill ="                          كنافة هت                   "+"\n"+
-                "                        رمضان كريم                     "+"\n"+
-                "=======================================================\n"+
-                "          رقم الاوردر   :      "+idgenerate+" \n"+
-                "    الوفت والتاريخ:  "+orderTime+" \n"+
-                "=======================================================\n"+
-                "         اسم العميل   :          "+username+" \n"+
-                "         رقم التليفون :          "+userphone+" \n"+
-                "             العنوان  :          "+userlocation+" \n"+
-                "=======================================================\n"+
-                "  الصنف   "+" \t"+"  الكمية  "+" \t"+"  الخصم  "+" \t"+"اللإجمالي"+" \n";
 
-        String sqlscript = "SELECT * FROM ordersdata where orderNo = "+idgenerate+";";
-        try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
-            while (dbResGetId.next()){
-                String type = dbResGetId.getString("type");
-                String name = dbResGetId.getString("name");
-                double no = dbResGetId.getDouble("no");
-                String quantity = dbResGetId.getString("quantity");
-                double discount = dbResGetId.getDouble("disc");
-                double total = dbResGetId.getDouble("netPrice");
-                textbill+= type+" "+name+"\t"+no+" "+quantity+"\t"+discount+"\t"+total+"\n";
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String sqlscript2 = "SELECT * FROM orderdetails  where orderNo = "+idgenerate+";";
-        try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript2);
-            while (dbResGetId.next()){
-
-                price = dbResGetId.getDouble("price");
-                totdisc = dbResGetId.getDouble("totDisc");
-                delivery = dbResGetId.getInt("delivery");
-                totnetprice = dbResGetId.getInt("totNetPrice");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        textbill+="=======================================================\n"+
-                "السعر قبل الخصم :  "+"\t\t\t\t"+price+"\n"+
-                "  إجمالي الخصم  :  "+"\t\t\t\t"+totdisc+"\n"+
-                "      الدليفري  :  "+"\t\t\t\t"+delivery+"\n"+
-                "       الإجمالي  :  "+"\t\t\t\t"+totnetprice+"\n"+
-                "=======================================================\n"+
-                "            سهرتك تحلي في رمضان مع كنافة هت             "+"\n"+
-                " العاشر من رمضان - المجاورة السابعة - امام شبكة المياة  "+"\n"+
-                "                          01006318817                    ";
-        try {
-            //textArea.setText(textbill);
-            print();
-        }catch (Exception e){
-            e.getCause();
-            e.printStackTrace();
-        }
-
-    }
-    private static void print() {
-
-        TextFlow printArea = new TextFlow(new Text(textbill));
-
-        PrinterJob printerJob = PrinterJob.createPrinterJob();
-
-        if (printerJob != null ) {
-            PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
-            printArea.setMaxWidth(pageLayout.getPrintableWidth());
-
-
-            if (printerJob.printPage(printArea)) {
-                printerJob.endJob();
-                // done printing
-            } else {
-                System.out.println("Failed to print");
-            }
-        } else {
-            System.out.println("Canceled");
-        }
-    }
     public void menuPage(javafx.event.ActionEvent actionEvent){
 
         try {
@@ -291,6 +198,101 @@ public class userdata implements Initializable {
         }
 
     }
+    public static void printNode(Node node) {
+
+        Printer printer = Printer.getDefaultPrinter();
+
+        PrinterJob printerJob = PrinterJob.createPrinterJob(printer);
+
+        Paper paper = PrintHelper.createPaper("Roll80", 80, 590, Units.MM);
+
+        PageLayout pageLayout = printerJob.getPrinter().createPageLayout(paper, PageOrientation.PORTRAIT, 0, 0, 0, 0);
+
+        double scale = 0.791;
+
+        node.getTransforms().add(new Scale(scale, scale));
+
+        if (printerJob != null) {
+            boolean success = printerJob.printPage(pageLayout, node);
+            if (success) {
+                printerJob.endJob();
+                System.exit(0);
+            }
+        }
+
+    }
+    //*** prepare text for printing
+    public static Node getPrintableText(){
+
+        Label text = new Label();
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("*********************************************" + "\n");
+        stringBuilder.append("                    كنافة هت                       \n");
+        stringBuilder.append("                   رمضان كريم                      \n");
+        stringBuilder.append("*********************************************" + "\n");
+
+        stringBuilder.append("          رقم الاوردر   :                    "+idgenerate+" \n");
+        stringBuilder.append("    الوفت والتاريخ:  "+orderTime+" \n");
+        stringBuilder.append("*********************************************" + "\n");
+        stringBuilder.append("اسم العميل   :    "+username+" \n");
+        stringBuilder.append("         رقم التليفون   :                     "+userphone+" \n");
+        stringBuilder.append("العنوان  : "+userlocation+" \n");
+        stringBuilder.append("---------------------------------------------" + "\n");
+        stringBuilder.append("     الصنف      الكمية    الخصم الإجمالي" + "\n");
+        String sqlscript = "SELECT * FROM ordersdata where orderNo = "+idgenerate+";";
+        try {
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResGetId.next()){
+                String type = dbResGetId.getString("type");
+                String name = dbResGetId.getString("name");
+                double no = dbResGetId.getDouble("no");
+                String quantity = dbResGetId.getString("quantity");
+                double discount = dbResGetId.getDouble("disc");
+                double total = dbResGetId.getDouble("netPrice");
+                stringBuilder.append( type+" "+name+" \t "+no+" "+quantity+" \t "+discount+" \t "+total+"\n");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String sqlscript2 = "SELECT * FROM orderdetails  where orderNo = "+idgenerate+";";
+        try {
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript2);
+            while (dbResGetId.next()){
+
+                price = dbResGetId.getDouble("price");
+                totdisc = dbResGetId.getDouble("totDisc");
+                delivery = dbResGetId.getInt("delivery");
+                totnetprice = dbResGetId.getInt("totNetPrice");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        stringBuilder.append("=======================================================\n");
+        stringBuilder.append("السعر قبل الخصم :  "+"\t\t\t\t"+price+"\n");
+        stringBuilder.append("  إجمالي الخصم  :  "+"\t\t\t\t"+totdisc+"\n");
+        stringBuilder.append("      الدليفري  :    "+"\t\t\t\t"+delivery+"\n");
+        stringBuilder.append("       الإجمالي  :    "+"\t\t\t\t"+totnetprice+"\n");
+        stringBuilder.append("=======================================================\n");
+        stringBuilder.append( "            سهرتك تحلي في رمضان مع كنافة هت             "+"\n");
+        stringBuilder.append(  "العاشر من رمضان-المجاورة السابعة-امام شبكة المياة"+"\n");
+        stringBuilder.append( "                          01006318817                    ");
+
+        text.setText(stringBuilder.toString());
+
+        return text;
+    }
+    //*** issue print command
+    public void printReceipt(javafx.event.ActionEvent actionEvent){
+        savingNewData();
+        printNode(getPrintableText());
+    }
+    public static void outprint(int id){
+        getGenerated(id);
+        printNode(getPrintableText());
 
 
+
+    }
 }

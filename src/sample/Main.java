@@ -24,7 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         primarystage = primaryStage;
-         root = FXMLLoader.load(getClass().getResource("fxml/menuPage.fxml"));
+         root = FXMLLoader.load(getClass().getResource("fxml/signin.fxml"));
         primarystage.setTitle("كنافة هت");
         primarystage.setScene(new Scene(root));
         primarystage.show();

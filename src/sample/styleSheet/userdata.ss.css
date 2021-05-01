@@ -70,12 +70,14 @@
 .chart-background {
     -fx-background-color: transparent;
 }
+/*
 .button-container-mouse-moved:hover{
     -fx-background-color: rgba(186, 131, 131, 0.1);
 }
 .button-container-selected {
     -fx-background-color: rgba(177, 134, 134, 0.1);
 }
+*/
 .card {
     -fx-background-color: #ffffff;
     -fx-background-radius: 15px;
@@ -89,8 +91,6 @@
     -fx-font-size: 20px;
     -fx-font-family: AlArabiya;
     -fx-text-alignment: center;
-    -fx-fill: #070606;
-    -fx-text-fill: #000000;
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,.2), 10.0, 0.0, 0.0, 10.0);
     -fx-background-radius: 15px;
 

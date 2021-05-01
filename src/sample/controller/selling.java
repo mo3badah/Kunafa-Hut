@@ -671,21 +671,28 @@ public class selling implements Initializable {
     }
 
     public void addItem(javafx.event.ActionEvent actionEvent){
-        double price = Double.parseDouble(onePrice.getText());
-        Onetprice = returnDisc(price);
-        Odisc = Oprice-Onetprice;
-        clearDisc();
-        // save ItemData in the preorder table
-        String sqlscript = "INSERT INTO `kunafahut`.`preorder` (`type`, `name`, `no`, `quantity`, `price`, `disc`, `netPrice`) VALUES ('"+Otype+"','"+Oname+"',"+Ono+",'"+Oquantity+"',"+Oprice+","+Odisc+","+Onetprice+")";
         try {
-            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
-            System.out.println("updated successfully!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("dosen't updated!");
+            double price = Double.parseDouble(onePrice.getText());
+            Onetprice = returnDisc(price);
+            Odisc = Oprice-Onetprice;
+            clearDisc();
+            // save ItemData in the preorder table
+            String sqlscript = "INSERT INTO `kunafahut`.`preorder` (`type`, `name`, `no`, `quantity`, `price`, `disc`, `netPrice`) VALUES ('"+Otype+"','"+Oname+"',"+Ono+",'"+Oquantity+"',"+Oprice+","+Odisc+","+Onetprice+")";
+            try {
+                initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
+                System.out.println("updated successfully!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("dosen't updated!");
+            }
+            sellingTable.getItems().clear();
+            setSellingTable();
+        }catch (Exception e){
+            String selection = "من فضلك ادخل ادخل طلب اولاً ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
         }
-        sellingTable.getItems().clear();
-        setSellingTable();
+
     }
 
     public void clearDisc(){

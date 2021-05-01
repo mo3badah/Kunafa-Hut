@@ -8,15 +8,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static sample.controller.userdata.userphone;
 
 public class itemConfig implements Initializable {
 
@@ -107,6 +109,86 @@ public class itemConfig implements Initializable {
             e.getCause();
         }
 
+    }
+    public void update1(javafx.event.ActionEvent actionEvent){
+        String type =insName1.getText();
+        String name =insName1.getText();
+        Double big = Double.valueOf(insBig1.getText());
+        Double medium = Double.valueOf(insMedium1.getText());
+        if (type.isEmpty() || name.isEmpty() || big.isNaN() || medium.isNaN()) {
+            String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+        else {
+            // coping data to another Field
+            String sendOrderDetails = "UPDATE types set type = '"+type+"',name = '"+name+"', medium = "+medium+",big = "+big+" where type ='"+type+"' And name='"+name+"';";
+            System.out.println(big+" "+medium);
+            try {
+                selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+            itemTabel1.getItems().clear();
+            itemTabel2.getItems().clear();
+            setUsersTable();
+        }
+
+    }
+    public void fetchItem1(MouseEvent actionEvent){
+        int tableRowId = -1;
+        String type = "";
+        String name = "";
+        tableRowId = itemTabel1.getSelectionModel().getSelectedIndex();
+        if (!(tableRowId <= -1)) {
+            type = itemTabel1.getSelectionModel().getSelectedItem().type;
+            name = itemTabel1.getSelectionModel().getSelectedItem().name;
+            ResultSet dbResAllTotal;
+            try {
+                String sqlscript = "SELECT * from kunafahut.types where type='"+type+"' And name='"+name+"';";
+
+                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+
+                while (dbResAllTotal.next()) {
+                    insType1.setText(dbResAllTotal.getString("type"));
+                    insName1.setText(dbResAllTotal.getString("name"));
+                    insBig1.setText(String.valueOf(dbResAllTotal.getDouble("big")));
+                    insMedium1.setText(String.valueOf(dbResAllTotal.getDouble("medium")));
+                }
+
+            }catch (Exception e){
+                e.getCause();
+            }
+        }
+    }
+    public void fetchItem2(MouseEvent actionEvent){
+        int tableRowId = -1;
+        String type = "";
+        String name = "";
+        tableRowId = itemTabel1.getSelectionModel().getSelectedIndex();
+        if (!(tableRowId <= -1)) {
+            type = itemTabel2.getSelectionModel().getSelectedItem().type;
+            name = itemTabel2.getSelectionModel().getSelectedItem().name;
+            ResultSet dbResAllTotal;
+            try {
+                String sqlscript = "SELECT * from kunafahut.added where type='"+type+"' And name='"+name+"';";
+
+                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+
+                while (dbResAllTotal.next()) {
+                    insType2.setText(dbResAllTotal.getString("type"));
+                    insName2.setText(dbResAllTotal.getString("name"));
+                    insMediumName2.setText(dbResAllTotal.getString("mediumName"));
+                    insBigName2.setText(dbResAllTotal.getString("bigName"));
+                    insBig2.setText(String.valueOf(dbResAllTotal.getDouble("bigPrice")));
+                    insMedium2.setText(String.valueOf(dbResAllTotal.getDouble("mediumPrice")));
+                }
+
+            }catch (Exception e){
+                e.getCause();
+            }
+        }
     }
     public void setUsersTable(){
         ResultSet dbResAllTotal;
