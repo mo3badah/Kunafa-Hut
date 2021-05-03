@@ -49,6 +49,9 @@ public class userdata implements Initializable {
     private TextField Tlocation;
 
     @FXML
+    private TextField Tcomment;
+
+    @FXML
     private TextField Tprice;
 
     @FXML
@@ -70,6 +73,7 @@ public class userdata implements Initializable {
     public static String username;
     public static int userphone;
     public static String userlocation;
+    public static String comment;
     public static int delivery;
     public static double price;
     public static double totdisc;
@@ -86,6 +90,7 @@ public class userdata implements Initializable {
         TuserName.setText(String.valueOf(username));
         Tphone.setText(String.valueOf(userphone));
         Tlocation.setText(String.valueOf(userlocation));
+        Tcomment.setText(String.valueOf(comment));
         Tprice.setText(String.valueOf(price));
         Tdelivery.setText(String.valueOf(delivery));
         TtotDisc.setText(String.valueOf(totdisc));
@@ -122,6 +127,7 @@ public class userdata implements Initializable {
                 username = dbResGetId.getString("clientName");
                 userphone = dbResGetId.getInt("clientPhone");
                 userlocation = dbResGetId.getString("clientLocation");
+                comment = dbResGetId.getString("comment");
                 price = dbResGetId.getInt("price");
                 totdisc = dbResGetId.getDouble("totDisc");
                 delivery = dbResGetId.getInt("delivery");
@@ -137,11 +143,12 @@ public class userdata implements Initializable {
             username = TuserName.getText();
             userphone = Integer.parseInt((Tphone.getText()));
             userlocation = Tlocation.getText();
+            comment = Tcomment.getText();
         }catch (Exception e){
             e.getCause();
         }
         // coping data to another Field
-        String sendOrderDetails = "UPDATE orderdetails set clientName = '"+username+"',clientPhone = "+userphone+",clientLocation = '"+userlocation+"', delivery = "+delivery+", totNetPrice = totPrice+delivery where orderNo = "+idgenerate+";";
+        String sendOrderDetails = "UPDATE orderdetails set clientName = '"+username+"',clientPhone = "+userphone+",clientLocation = '"+userlocation+"',comment = '"+comment+"', delivery = "+delivery+", totNetPrice = totPrice+delivery where orderNo = "+idgenerate+";";
 
         try {
             initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
@@ -234,6 +241,7 @@ public class userdata implements Initializable {
         stringBuilder.append("اسم العميل   :    "+username+"\n");
         stringBuilder.append("         رقم التليفون   :    "+userphone+"\n");
         stringBuilder.append("العنوان  : "+userlocation+" \n");
+        stringBuilder.append( comment+"  \n");
         stringBuilder.append("-------------------------------------------------" + "\n");
         stringBuilder.append("     الصنف        الكمية    الخصم الإجمالي" + "\n");
         String sqlscript = "SELECT * FROM ordersdata where orderNo = "+idgenerate+";";

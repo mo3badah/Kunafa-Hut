@@ -923,8 +923,8 @@ public class selling implements Initializable {
              sendOrderDetails = "UPDATE orderdetails set cachierName = '"+cashierName+"',orderTime = CURRENT_TIMESTAMP,price = "+price+", totDisc = "+allDisc+", totPrice = "+allTotal+",totNetPrice = totPrice+delivery where orderNo = "+id+";";
 
         }else {
-             sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation )\n" +
-                    "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,totPrice+delivery,'',0,'');";
+             sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation,comment )\n" +
+                    "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,totPrice+delivery,'',0,'','');";
         }
 
         try {
