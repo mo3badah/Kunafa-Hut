@@ -64,7 +64,7 @@ public class ordersConfig implements Initializable {
     public void setOrdersTable(){
         ResultSet dbResAllTotal;
         try {
-            String sqlscript = "SELECT * from kunafahut.orderdetails";
+            String sqlscript = "SELECT * from kunafahut.orderdetails ORDER BY orderTime DESC";
             dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 oblist.add(new ordersTable(dbResAllTotal.getInt("orderNo"),dbResAllTotal.getInt("clientPhone"), dbResAllTotal.getInt("delivery"),dbResAllTotal.getInt("totNetPrice"),dbResAllTotal.getDouble("price"),dbResAllTotal.getDouble("totDisc"),dbResAllTotal.getDouble("totPrice"),dbResAllTotal.getTimestamp("orderTime"),dbResAllTotal.getString("clientName"),dbResAllTotal.getString("clientLocation"),dbResAllTotal.getString("cachierName")));
