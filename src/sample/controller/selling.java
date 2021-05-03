@@ -854,6 +854,7 @@ public class selling implements Initializable {
     public void printing1(javafx.event.ActionEvent actionEvent){
         if (checkEmpty()==1){
             printing();
+            userdata.outprint(idgenerate);
             //userdata.bill();
         }else {
             String selection = "من فضلك ادخل بيانات الاوردر ";
@@ -923,7 +924,7 @@ public class selling implements Initializable {
 
         }else {
              sendOrderDetails = "insert into orderdetails (orderNo, orderTime, cachierName, price, totDisc,totPrice, delivery, totNetPrice,clientName,clientPhone,clientLocation )\n" +
-                    "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,totNetPrice = totPrice+delivery,'',0,'');";
+                    "value ("+idgenerate+", CURRENT_TIMESTAMP, '"+cashierName+"', "+price+", "+allDisc+", "+allTotal+",0,totPrice+delivery,'',0,'');";
         }
 
         try {

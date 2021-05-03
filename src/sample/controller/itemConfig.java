@@ -111,31 +111,133 @@ public class itemConfig implements Initializable {
 
     }
     public void update1(javafx.event.ActionEvent actionEvent){
-        String type =insName1.getText();
-        String name =insName1.getText();
-        Double big = Double.valueOf(insBig1.getText());
-        Double medium = Double.valueOf(insMedium1.getText());
-        if (type.isEmpty() || name.isEmpty() || big.isNaN() || medium.isNaN()) {
+        try {
+            String type =insType1.getText();
+            String name =insName1.getText();
+            Double big = Double.valueOf(insBig1.getText());
+            Double medium = Double.valueOf(insMedium1.getText());
+            if (type.isEmpty() || name.isEmpty() || big.isNaN() || medium.isNaN()) {
+                String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else {
+                // coping data to another Field
+                String sendOrderDetails = "UPDATE kunafahut.types SET type = '"+type+"',name = '"+name+"',big = "+big+", medium = "+medium+" WHERE type ='"+type+"' AND name='"+name+"';";
+                try {
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    e.getCause();
+                }
+                itemTabel1.getItems().clear();
+                itemTabel2.getItems().clear();
+                setUsersTable();
+            }
+        }catch (Exception e){
             String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }
-        else {
-            // coping data to another Field
-            String sendOrderDetails = "UPDATE types set type = '"+type+"',name = '"+name+"', medium = "+medium+",big = "+big+" where type ='"+type+"' And name='"+name+"';";
-            System.out.println(big+" "+medium);
-            try {
-                selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                e.getCause();
-            }
-            itemTabel1.getItems().clear();
-            itemTabel2.getItems().clear();
-            setUsersTable();
-        }
-
     }
+    public void update2(javafx.event.ActionEvent actionEvent){
+        try {
+            String type =insType2.getText();
+            String name =insName2.getText();
+            String bigName =insBigName2.getText();
+            String mediumName =insMediumName2.getText();
+            Double big = Double.valueOf(insBig2.getText());
+            Double medium = Double.valueOf(insMedium2.getText());
+            if (type.isEmpty() || name.isEmpty() || big.isNaN() || medium.isNaN()) {
+                String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else {
+                // coping data to another Field
+                String sendOrderDetails = "UPDATE kunafahut.added SET type = '"+type+"',name = '"+name+"',mediumName = '"+mediumName+"',bigName = '"+bigName+"',bigPrice = "+big+", mediumPrice = "+medium+" WHERE type ='"+type+"' AND name='"+name+"';";
+                try {
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                } catch (SQLException e) {
+                    String selection = "من فضلك ادخل النوع والاسم مطابقاً اولاً ";
+                    Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+                itemTabel1.getItems().clear();
+                itemTabel2.getItems().clear();
+                setUsersTable();
+            }
+        }catch (Exception e){
+            String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+    public void delte2(javafx.event.ActionEvent actionEvent){
+        try {
+            String type =insType2.getText();
+            String name =insName2.getText();
+            if (type.isEmpty() || name.isEmpty()) {
+                String selection = "من فضلك ادخل النوع والاسم المراد حذفة ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else {
+                // coping data to another Field
+                String sendOrderDetails = "DELETE FROM kunafahut.added WHERE type ='"+type+"' AND name='"+name+"';";
+                try {
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    e.getCause();
+                }
+                itemTabel1.getItems().clear();
+                itemTabel2.getItems().clear();
+                setUsersTable();
+            }
+        }catch (Exception e){
+            String selection = "من فضلك ادخل النوع والاسم المراد حذفة ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+    public void add2(javafx.event.ActionEvent actionEvent){
+        try {
+            String type =insType2.getText();
+            String name =insName2.getText();
+            String bigName =insBigName2.getText();
+            String mediumName =insMediumName2.getText();
+            Double big = Double.valueOf(insBig2.getText());
+            Double medium = Double.valueOf(insMedium2.getText());
+            if (type.isEmpty() || name.isEmpty() || big.isNaN() || medium.isNaN()) {
+                String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else {
+                // coping data to another Field
+                String sendOrderDetails = "INSERT INTO added (type, name, mediumName, mediumPrice, bigName, bigPrice) values ('"+type+"','"+name+"','"+mediumName+"',"+medium+",'"+bigName+"',"+big+");";
+                try {
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                } catch (SQLException e) {
+                    String selection = "من فضلك لا تدخل قيم مكررة ً ";
+                    Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+                itemTabel1.getItems().clear();
+                itemTabel2.getItems().clear();
+                setUsersTable();
+            }
+        }catch (Exception e){
+            String selection = "من فضلك ادخل كل الخانات صحيحة اولاً ";
+            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+
     public void fetchItem1(MouseEvent actionEvent){
         int tableRowId = -1;
         String type = "";
@@ -166,7 +268,7 @@ public class itemConfig implements Initializable {
         int tableRowId = -1;
         String type = "";
         String name = "";
-        tableRowId = itemTabel1.getSelectionModel().getSelectedIndex();
+        tableRowId = itemTabel2.getSelectionModel().getSelectedIndex();
         if (!(tableRowId <= -1)) {
             type = itemTabel2.getSelectionModel().getSelectedItem().type;
             name = itemTabel2.getSelectionModel().getSelectedItem().name;

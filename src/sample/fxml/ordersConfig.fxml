@@ -45,13 +45,13 @@
                   <TableColumn fx:id="TcashierName" prefWidth="90.0" text="اسم الكاشير" />
                   <TableColumn fx:id="TnetTotal" prefWidth="110.0" text="الاجمالي" />
                   <TableColumn fx:id="Tdelivery" prefWidth="84.0" text="الدليفري" />
-                  <TableColumn fx:id="Tnetprice" prefWidth="105.0" text="سعر بعد الخصم" />
-                  <TableColumn fx:id="Tdisc" prefWidth="102.0" text="اجمالي الخصم" />
-                  <TableColumn fx:id="Tprice" prefWidth="102.0" text="سعر قبل الخصم" />
-                  <TableColumn fx:id="Tlocation" prefWidth="102.0" text="المكان" />
-                  <TableColumn fx:id="Tphone" prefWidth="102.0" text="رقم التليفون" />
-                  <TableColumn fx:id="TuserName" prefWidth="102.0" text="اسم العميل" />
-                  <TableColumn fx:id="TorderNo" prefWidth="133.0" text="رقم الاوردر" />
+                  <TableColumn fx:id="Tnetprice" prefWidth="150.0" text="سعر بعد الخصم" />
+                  <TableColumn fx:id="Tdisc" prefWidth="93.0" text="اجمالي الخصم" />
+                  <TableColumn fx:id="Tprice" prefWidth="101.0" text="سعر قبل الخصم" />
+                  <TableColumn fx:id="Tlocation" prefWidth="158.0" text="المكان" />
+                  <TableColumn fx:id="Tphone" prefWidth="79.0" text="رقم التليفون" />
+                  <TableColumn fx:id="TuserName" prefWidth="179.0" text="اسم العميل" />
+                  <TableColumn fx:id="TorderNo" prefWidth="116.0" text="رقم الاوردر" />
                </columns>
                <styleClass>
                   <String fx:value="card" />
@@ -60,29 +60,50 @@
             </TableView>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" onAction="#fastPrint" prefHeight="78.0" prefWidth="256.0" text="طباعة">
+                  <Button mnemonicParsing="false" onAction="#fastPrint" prefHeight="78.0" prefWidth="400.0" stylesheets="@../styleSheet/ordersConfig.css" text="طباعة">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arabic Typesetting" size="27.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="67.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/printer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#editOrder" prefHeight="78.0" prefWidth="256.0" text="تعديل">
+                  <Button mnemonicParsing="false" onAction="#editOrder" prefHeight="78.0" prefWidth="400.0" stylesheets="@../styleSheet/ordersConfig.css" text="تعديل">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arabic Typesetting" size="27.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/exchange.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#dropTableRow" prefHeight="78.0" prefWidth="256.0" text="حذف">
+                  <Button mnemonicParsing="false" onAction="#dropTableRow" prefHeight="78.0" prefWidth="400.0" stylesheets="@../styleSheet/ordersConfig.css" text="حذف">
                      <HBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arabic Typesetting" size="27.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </HBox>

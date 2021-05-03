@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,15 +12,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userdata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
+<AnchorPane fx:id="userdata" maxHeight="694.0" maxWidth="1309.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
    <children>
-      <VBox alignment="CENTER" maxWidth="550.0" prefHeight="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" maxWidth="1309.0" prefHeight="694.0" prefWidth="664.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-64.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="297.0">
+                  <VBox prefHeight="100.0" prefWidth="650.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#menuPage" text="القائمة الرئيسة">
+                        <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="59.0" prefWidth="288.0" text="القائمة الرئيسة">
                            <graphic>
                               <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -30,7 +29,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="272.0" stylesheets="@../styleSheet/userdata.ss.css" text="التاريخ">
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="655.0" stylesheets="@../styleSheet/userdata.ss.css" text="التاريخ">
                            <VBox.margin>
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                            </VBox.margin>
@@ -51,11 +50,11 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <HBox prefHeight="100.0" prefWidth="300.0">
+                  <HBox prefHeight="157.0" prefWidth="658.0">
                      <children>
-                        <VBox prefHeight="100.0" prefWidth="297.0">
+                        <VBox prefHeight="157.0" prefWidth="658.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#gotoselling" text="الكاشير">
+                              <Button mnemonicParsing="false" onAction="#gotoselling" prefHeight="59.0" prefWidth="291.0" text="الكاشير">
                                  <graphic>
                                     <ImageView fx:id="menuPageImage1" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -64,7 +63,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="رقم الفاتورة">
+                              <Label alignment="CENTER" prefHeight="35.0" prefWidth="655.0" stylesheets="@../styleSheet/userdata.ss.css" text="رقم الفاتورة">
                                  <VBox.margin>
                                     <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                  </VBox.margin>
@@ -94,40 +93,40 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox prefHeight="126.0" prefWidth="462.0">
+                  <VBox prefHeight="266.0" prefWidth="1005.0">
                      <children>
-                        <TextField fx:id="TuserName" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="اسم العميل" stylesheets="@../styleSheet/userdata.ss.css">
+                        <TextField fx:id="TuserName" alignment="CENTER" prefHeight="70.0" prefWidth="952.0" promptText="اسم العميل" stylesheets="@../styleSheet/userdata.ss.css">
                            <styleClass>
                               <String fx:value="card" />
                               <String fx:value="margin1" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="Tphone" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="رقم التليفون" stylesheets="@../styleSheet/userdata.ss.css">
+                        <TextField fx:id="Tphone" alignment="CENTER" prefHeight="70.0" prefWidth="459.0" promptText="رقم التليفون" stylesheets="@../styleSheet/userdata.ss.css">
                            <styleClass>
                               <String fx:value="card" />
                               <String fx:value="margin1" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="Tlocation" alignment="CENTER" prefHeight="46.0" prefWidth="459.0" promptText="العنوان" stylesheets="@../styleSheet/userdata.ss.css">
+                        <TextField fx:id="Tlocation" alignment="CENTER" prefHeight="70.0" prefWidth="459.0" promptText="العنوان" stylesheets="@../styleSheet/userdata.ss.css">
                            <styleClass>
                               <String fx:value="card" />
                               <String fx:value="margin1" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="126.0" prefWidth="144.0">
+                  <VBox prefHeight="105.0" prefWidth="295.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="اسم العميل">
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="اسم العميل">
                            <styleClass>
                               <String fx:value="back-transparent" />
                               <String fx:value="fill-gray" />
@@ -137,8 +136,11 @@
                               <String fx:value="margin1" />
                               <String fx:value="fn-32" />
                            </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="رقم التليفون">
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="رقم التليفون">
                            <styleClass>
                               <String fx:value="back-transparent" />
                               <String fx:value="fill-gray" />
@@ -148,8 +150,11 @@
                               <String fx:value="margin1" />
                               <String fx:value="fn-32" />
                            </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="العنوان">
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="295.0" stylesheets="@../styleSheet/userdata.ss.css" text="العنوان">
                            <styleClass>
                               <String fx:value="back-transparent" />
                               <String fx:value="fill-gray" />
@@ -159,6 +164,9 @@
                               <String fx:value="margin1" />
                               <String fx:value="fn-32" />
                            </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
@@ -166,7 +174,7 @@
             </HBox>
             <HBox prefHeight="71.0" prefWidth="492.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="238.0">
+                  <VBox prefHeight="71.0" prefWidth="401.0">
                      <children>
                         <TextField fx:id="Tprice" alignment="CENTER" prefHeight="51.0" prefWidth="254.0" promptText="السعر قبل الخصم" stylesheets="@../styleSheet/userdata.ss.css" text="0">
                            <VBox.margin>
@@ -180,7 +188,7 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="100.0" prefWidth="232.0">
+                  <VBox prefHeight="71.0" prefWidth="332.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="51.0" prefWidth="299.0" stylesheets="@../styleSheet/userdata.ss.css" text="السعر">
                            <styleClass>
@@ -202,7 +210,7 @@
             </HBox>
             <HBox prefHeight="64.0" prefWidth="600.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="238.0" stylesheets="@../styleSheet/userdata.ss.css">
+                  <VBox prefHeight="71.0" prefWidth="401.0" stylesheets="@../styleSheet/userdata.ss.css">
                      <children>
                         <TextField fx:id="TtotDisc" alignment="CENTER" prefHeight="61.0" prefWidth="209.0" promptText="الخصم" text="0">
                            <VBox.margin>
@@ -216,9 +224,9 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="100.0" prefWidth="232.0">
+                  <VBox prefHeight="71.0" prefWidth="316.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="216.0" stylesheets="@../styleSheet/userdata.ss.css" text="إجمالي الخصم">
+                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="302.0" stylesheets="@../styleSheet/userdata.ss.css" text="إجمالي الخصم">
                            <styleClass>
                               <String fx:value="back-transparent" />
                               <String fx:value="fill-gray" />
@@ -238,7 +246,7 @@
             </HBox>
             <HBox prefHeight="71.0" prefWidth="492.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="238.0">
+                  <VBox prefHeight="71.0" prefWidth="398.0">
                      <children>
                         <TextField fx:id="Tdelivery" alignment="CENTER" prefHeight="51.0" prefWidth="254.0" promptText="الدليفري" stylesheets="@../styleSheet/userdata.ss.css" text="0">
                            <VBox.margin>
@@ -251,7 +259,7 @@
                            </styleClass></TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="100.0" prefWidth="232.0">
+                  <VBox prefHeight="71.0" prefWidth="319.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="51.0" prefWidth="299.0" stylesheets="@../styleSheet/userdata.ss.css" text="الدليفري">
                            <styleClass>
@@ -273,7 +281,7 @@
             </HBox>
             <HBox prefHeight="64.0" prefWidth="600.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="238.0">
+                  <VBox prefHeight="71.0" prefWidth="399.0">
                      <children>
                         <TextField fx:id="TtotNetPrice" alignment="CENTER" prefHeight="61.0" prefWidth="209.0" promptText="الفاتورة" stylesheets="@../styleSheet/userdata.ss.css" text="0">
                            <VBox.margin>
@@ -287,9 +295,9 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="100.0" prefWidth="232.0">
+                  <VBox prefHeight="71.0" prefWidth="322.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="216.0" stylesheets="@../styleSheet/userdata.ss.css" text="إجمالي الفاتورة">
+                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="327.0" stylesheets="@../styleSheet/userdata.ss.css" text="إجمالي الفاتورة">
                            <styleClass>
                               <String fx:value="back-transparent" />
                               <String fx:value="fill-gray" />
@@ -307,19 +315,25 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox prefHeight="72.0" prefWidth="292.0">
+            <VBox prefHeight="131.0" prefWidth="1373.0">
                <children>
-                  <Button fx:id="printing2" mnemonicParsing="false" onAction="#printing2" prefHeight="52.0" prefWidth="578.0" stylesheets="@../styleSheet/userdata.ss.css" text="إطبع">
+                  <Button fx:id="printing2" mnemonicParsing="false" onAction="#printReceipt" prefHeight="73.0" prefWidth="1209.0" stylesheets="@../styleSheet/userdata.ss.css" text="إطبع">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="59.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/printer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="51.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
-            <TextArea fx:id="textArea" prefHeight="168.0" prefWidth="550.0">
-               <font>
-                  <Font size="8.0" />
-               </font></TextArea>
          </children>
       </VBox>
    </children>

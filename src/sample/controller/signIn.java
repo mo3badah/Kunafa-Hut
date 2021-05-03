@@ -47,17 +47,9 @@ public class signIn implements Initializable {
 
     public void buttonAlert(javafx.event.ActionEvent actionEvent) throws SQLException {
 
-        //       loginText.setText("you enter the sign in button successfully");
-        //dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
-        //dbstm = dbconn.createStatement();
-        /*dbres = dbstm.executeQuery("SELECT * from kunafahut.user");
-
-
-        System.out.println(userdata);
-        */
         initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021");
         if (userName.getText().isEmpty() == true) {
-            loginText.setText("please enter the user name and password");
+            loginText.setText("            من فضلك قم بادخال اسم المستحدم وكلمة المرور            ");
         } else try {
             try {
                 dbresLog = dbstm.executeQuery("SELECT * from kunafahut.user where username = '" + userName.getText() + "' AND password = '" + password.getText() + "'");
@@ -74,7 +66,7 @@ public class signIn implements Initializable {
 
 
             if (userName.getText().equals(databaseUsername) && password.getText().equals(databasePassword)) {
-                loginText.setText("Congratulation you had already signed in");
+                loginText.setText("             مبروك لقد تم تسجيل الدخول بنجاح           ");
                 loginText.setTextFill(Color.GREEN);
                 selling.setCashierName(databaseUsername);
                 try {
@@ -90,7 +82,7 @@ public class signIn implements Initializable {
                 }
 
             } else {
-                loginText.setText("Please try again");
+                loginText.setText("          من فضلك اعد المحاولة مرة اخري مع التاكد من المعلومات          ");
                 loginText.setTextFill(Color.RED);
 
             }

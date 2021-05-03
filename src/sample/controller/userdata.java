@@ -186,6 +186,7 @@ public class userdata implements Initializable {
 
     public  void gotoselling(javafx.event.ActionEvent actionEvent){
         try {
+            sample.controller.selling.setIsmod(false);
             Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/selling.fxml"));
             Scene userscene = new Scene(userview);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -212,12 +213,9 @@ public class userdata implements Initializable {
 
         node.getTransforms().add(new Scale(scale, scale));
 
-        if (printerJob != null) {
-            boolean success = printerJob.printPage(pageLayout, node);
-            if (success) {
-                printerJob.endJob();
-                System.exit(0);
-            }
+        boolean success = printerJob.printPage(pageLayout, node);
+        if (success) {
+            printerJob.endJob();
         }
 
     }
@@ -227,20 +225,17 @@ public class userdata implements Initializable {
         Label text = new Label();
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("*********************************************" + "\n");
-        stringBuilder.append("                    كنافة هت                       \n");
-        stringBuilder.append("                   رمضان كريم                      \n");
-        stringBuilder.append("*********************************************" + "\n");
-
+        stringBuilder.append("                    كنافة هت                          \n");
+        stringBuilder.append("                       01006318817                     \n");
+        stringBuilder.append("-------------------------------------------------" + "\n");
         stringBuilder.append("          رقم الاوردر   :                    "+idgenerate+" \n");
         stringBuilder.append("    الوفت والتاريخ:  "+orderTime+" \n");
-        stringBuilder.append("*********************************************" + "\n");
-        stringBuilder.append("اسم العميل   :    "+username+" \n");
-        stringBuilder.append("         رقم التليفون   :                     "+userphone+" \n");
+        stringBuilder.append("-------------------------------------------------" + "\n");
+        stringBuilder.append("اسم العميل   :    "+username+"\n");
+        stringBuilder.append("         رقم التليفون   :    "+userphone+"\n");
         stringBuilder.append("العنوان  : "+userlocation+" \n");
-        stringBuilder.append("---------------------------------------------" + "\n");
-        stringBuilder.append("     الصنف      الكمية    الخصم الإجمالي" + "\n");
+        stringBuilder.append("-------------------------------------------------" + "\n");
+        stringBuilder.append("     الصنف        الكمية    الخصم الإجمالي" + "\n");
         String sqlscript = "SELECT * FROM ordersdata where orderNo = "+idgenerate+";";
         try {
             ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
@@ -251,7 +246,8 @@ public class userdata implements Initializable {
                 String quantity = dbResGetId.getString("quantity");
                 double discount = dbResGetId.getDouble("disc");
                 double total = dbResGetId.getDouble("netPrice");
-                stringBuilder.append( type+" "+name+" \t "+no+" "+quantity+" \t "+discount+" \t "+total+"\n");
+                stringBuilder.append("===========================\n");
+                stringBuilder.append( type+" "+name+" \t "+no+" "+quantity+" \t "+discount+" \t "+total+" * \n");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -269,18 +265,15 @@ public class userdata implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        stringBuilder.append("=======================================================\n");
+        stringBuilder.append("============================\n");
         stringBuilder.append("السعر قبل الخصم :  "+"\t\t\t\t"+price+"\n");
         stringBuilder.append("  إجمالي الخصم  :  "+"\t\t\t\t"+totdisc+"\n");
         stringBuilder.append("      الدليفري  :    "+"\t\t\t\t"+delivery+"\n");
         stringBuilder.append("       الإجمالي  :    "+"\t\t\t\t"+totnetprice+"\n");
-        stringBuilder.append("=======================================================\n");
-        stringBuilder.append( "            سهرتك تحلي في رمضان مع كنافة هت             "+"\n");
-        stringBuilder.append(  "العاشر من رمضان-المجاورة السابعة-امام شبكة المياة"+"\n");
-        stringBuilder.append( "                          01006318817                    ");
-
+        stringBuilder.append("--------------------------------------------\n");
+        stringBuilder.append( "        سهرتك تحلي في رمضان مع كنافة هت               "+"\n");
+        stringBuilder.append( "            المجاورة السابعة-بجوار عالم أليف                "+"\n");
         text.setText(stringBuilder.toString());
-
         return text;
     }
     //*** issue print command
@@ -291,8 +284,7 @@ public class userdata implements Initializable {
     public static void outprint(int id){
         getGenerated(id);
         printNode(getPrintableText());
-
-
+        sample.controller.selling.setIsmod(false);
 
     }
 }
