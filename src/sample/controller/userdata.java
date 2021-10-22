@@ -3,6 +3,7 @@ package sample.controller;
 import com.jfoenix.controls.JFXBadge;
 import com.sun.javafx.print.PrintHelper;
 import com.sun.javafx.print.Units;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -95,6 +98,14 @@ public class userdata implements Initializable {
         Tdelivery.setText(String.valueOf(delivery));
         TtotDisc.setText(String.valueOf(totdisc));
         TtotNetPrice.setText(String.valueOf(totnetprice));
+        Tphone.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode().equals(KeyCode.ENTER)) {
+                    fetchِAuto(Integer.parseInt(Tphone.getText()));
+                }
+            }
+        });
 
 
     }
@@ -113,6 +124,22 @@ public class userdata implements Initializable {
             id = sample.controller.selling.getIdgenerate();
         }
         return id;
+    }
+    public void fetchِAuto(int id){
+        ResultSet dbResAllTotal;
+        try {
+            String sqlscript = "SELECT * from aleef.orderdetails where clientPhone = " + id + ";";
+            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/aleef?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            while (dbResAllTotal.next()) {
+                TuserName.setText(dbResAllTotal.getString("clientName"));
+                Tphone.setText(dbResAllTotal.getString("clientPhone"));
+                Tlocation.setText(dbResAllTotal.getString("clientLocation"));
+                Tcomment.setText(dbResAllTotal.getString("comment"));
+                Tdelivery.setText(dbResAllTotal.getString("delivery"));
+            }
+        } catch (Exception e) {
+            e.getCause();
+        }
     }
 
     public static void getGenerated(int id) {

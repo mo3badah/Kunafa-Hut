@@ -14,13 +14,13 @@
 
 <AnchorPane fx:id="userdata" maxHeight="694.0" maxWidth="1309.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
    <children>
-      <VBox alignment="CENTER" layoutX="32.0" layoutY="22.0" maxWidth="1338.0" prefHeight="694.0" prefWidth="1257.0" AnchorPane.bottomAnchor="-22.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="22.0">
+      <VBox alignment="CENTER" layoutX="32.0" layoutY="-91.0" maxWidth="1338.0" prefHeight="807.0" prefWidth="1257.0" AnchorPane.bottomAnchor="-22.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="-91.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="157.0" prefWidth="636.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="59.0" prefWidth="288.0" text="القائمة الرئيسة">
+                        <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="59.0" prefWidth="288.0" stylesheets="@../styleSheet/userdata.ss.css" text="القائمة الرئيسة">
                            <graphic>
                               <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -54,7 +54,7 @@
                      <children>
                         <VBox prefHeight="157.0" prefWidth="658.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#gotoselling" prefHeight="59.0" prefWidth="291.0" text="الكاشير">
+                              <Button mnemonicParsing="false" onAction="#gotoselling" prefHeight="59.0" prefWidth="291.0" stylesheets="@../styleSheet/userdata.ss.css" text="الكاشير">
                                  <graphic>
                                     <ImageView fx:id="menuPageImage1" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
