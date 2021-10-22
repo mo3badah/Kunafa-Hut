@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.java.util.jar.pack.Utils'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

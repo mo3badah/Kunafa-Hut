@@ -2,16 +2,15 @@ package sample.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -60,6 +59,10 @@ public class ordersConfig implements Initializable {
     @FXML
     private TableColumn<ordersTable, Integer> TorderNo;
 
+    @FXML
+    private TextField ifilter;
+
+
     ObservableList<ordersTable> oblist = FXCollections.observableArrayList();
     public void setOrdersTable(){
         ResultSet dbResAllTotal;
@@ -85,8 +88,34 @@ public class ordersConfig implements Initializable {
         TcashierName.setCellValueFactory(new PropertyValueFactory<>("cachierName"));
         Ttime.setCellValueFactory(new PropertyValueFactory<>("orderTime"));
         ordersTable.setItems(oblist);
-
-
+        // filtered list
+        FilteredList<ordersTable> filterData = new FilteredList<>(oblist, b -> true);
+        ifilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterData.setPredicate(ordersTable1 -> {
+                if (newValue.isEmpty() || newValue==null){
+                    return true;
+                }
+                String searchKeyWord = newValue.toLowerCase();
+                if (ordersTable1.getClientName().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if (ordersTable1.getClientLocation().toLowerCase().contains(searchKeyWord)){
+                    return true;
+                }
+                else if (String.valueOf(ordersTable1.getOrderNo()).contains(searchKeyWord)){
+                    return true;
+                }
+                else if (String.valueOf(ordersTable1.getClientPhone()).contains(searchKeyWord)){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+        } );
+        SortedList<ordersTable> sortedData = new SortedList<>(filterData);
+        sortedData.comparatorProperty().bind(ordersTable.comparatorProperty());
+        ordersTable.setItems(sortedData);
     }
 
     @Override

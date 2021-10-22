@@ -7,6 +7,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="controlsfx-8.40.12" level="project" />
+    <orderEntry type="library" name="KunafaHut1" level="project" />
+    <orderEntry type="library" name="ext" level="project" />
+    <orderEntry type="library" name="Kunafa Hut" level="project" />
+    <orderEntry type="library" name="KunafaHut4" level="project" />
+    <orderEntry type="library" name="KunafaHut2" level="project" />
+    <orderEntry type="library" name="KunafaHut3" level="project" />
+    <orderEntry type="library" name="KunafaHut" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="escposjava-1.0-SNAPSHOT" level="project" />
   </component>
 </module>

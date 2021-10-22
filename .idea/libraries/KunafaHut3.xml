@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="KunafaHut3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/sample/KunafaHut.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,1 @@
+javac --module-path="E:\Kunafa Hut\lib"  --add-modules="controller" --add-modules="fxml" --add-modules="image" --add-modules="styleSheet" -jar KunafaHut.jar

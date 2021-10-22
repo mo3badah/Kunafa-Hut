@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kunafa Hut.iml" filepath="$PROJECT_DIR$/Kunafa Hut.iml" />
-      <module fileurl="file://$PROJECT_DIR$/esc-pos-java-master/escposjava.iml" filepath="$PROJECT_DIR$/esc-pos-java-master/escposjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esc-pos-java-master/src/main/main.iml" filepath="$PROJECT_DIR$/esc-pos-java-master/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esc-pos-java-master/src/test/test.iml" filepath="$PROJECT_DIR$/esc-pos-java-master/src/test/test.iml" />
     </modules>
   </component>
 </project>

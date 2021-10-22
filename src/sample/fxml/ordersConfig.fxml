@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,13 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="722.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ordersConfig">
+<AnchorPane prefHeight="788.0" prefWidth="1388.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ordersConfig">
    <children>
       <VBox layoutX="20.0" layoutY="4.0" prefHeight="715.0" prefWidth="1269.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#menuPage" text="القائمة الرئيسة">
+                  <Button mnemonicParsing="false" onAction="#menuPage" prefHeight="59.0" prefWidth="426.0" stylesheets="@../styleSheet/ordersConfig.css" text="القائمة الرئيسة">
                      <graphic>
                         <ImageView fx:id="menuPageImage" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -28,7 +29,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="1001.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/ordersConfig.css" text="الاوردرات">
+                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="741.0" style="-fx-background-radius: 50;" stylesheets="@../styleSheet/ordersConfig.css" text="الاوردرات">
                      <styleClass>
                         <String fx:value="back-transparent" />
                         <String fx:value="fill-gray" />
@@ -37,9 +38,34 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </Label>
+                  <VBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="253.0" stylesheets="@../styleSheet/ordersConfig.css" text="تصفية">
+                           <font>
+                              <Font name="Arabic Typesetting" size="24.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fx:id="bfilter" fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../aleem3leef/src/sample/fxml/filter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="ifilter" alignment="CENTER" prefHeight="52.0" prefWidth="300.0" promptText="فلترة بالباركود او الاسم او النوع" stylesheets="@../styleSheet/ordersConfig.css">
+                           <styleClass>
+                              <String fx:value="card" />
+                              <String fx:value="margin1" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
-            <TableView fx:id="ordersTable" prefHeight="594.0" prefWidth="1300.0" stylesheets="@../styleSheet/userConfig.css">
+            <TableView fx:id="ordersTable" prefHeight="594.0" prefWidth="1300.0" stylesheets="@../styleSheet/ordersConfig.css">
                <columns>
                   <TableColumn fx:id="Ttime" prefWidth="108.0" text="وقت الاوردر" />
                   <TableColumn fx:id="TcashierName" prefWidth="90.0" text="اسم الكاشير" />

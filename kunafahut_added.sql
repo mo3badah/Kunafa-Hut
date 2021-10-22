@@ -1,0 +1,3 @@
+INSERT INTO kunafahut.added (type, name, mediumName, mediumPrice, bigName, bigPrice) VALUES ('فورم', 'سادة', 'وسط', 50, 'كبير', 80);
+INSERT INTO kunafahut.added (type, name, mediumName, mediumPrice, bigName, bigPrice) VALUES ('مشروبات', 'لاتيه', 'وسط ', 10, 'كبير', 15);
+INSERT INTO kunafahut.added (type, name, mediumName, mediumPrice, bigName, bigPrice) VALUES ('مشروبات', 'نسكافية', 'صغير', 8, 'وسط', 10);

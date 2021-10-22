@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/charsets.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/jce.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/javaws.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/jfxswt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/management-agent.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/jsse.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/resources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/jfr.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Kunafa_Hut/bundles/Kunafa Hut/runtime/lib/rt.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
