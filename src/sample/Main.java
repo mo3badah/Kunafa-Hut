@@ -1,30 +1,10 @@
 package sample;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.EventObject;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Main extends Application {
     Stage primarystage;
     static Parent root;
@@ -32,26 +12,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primarystage = primaryStage;
-        root = FXMLLoader.load(getClass().getResource("fxml/dashboard.fxml"));
+        root = FXMLLoader.load(getClass().getResource("fxml/signin.fxml"));
         primarystage.setTitle("كنافة هت");
         primarystage.setScene(new Scene(root));
         primarystage.show();
-
     }
-
     public static void main(String[] args) {
         launch(args);
-
-
-    }
-
-    public static void showuserdata() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("fxml/signIn.fxml"));
-        BorderPane userdata = loader.load();
-        Stage userdatastage;
-
-
     }
 
     public static String getValidation() {
@@ -63,7 +30,7 @@ public class Main extends Application {
         return x[0];
     }
     public static boolean isEnter(){
-        final String pass = "كنافةهت";
+        final String pass = "هت2021";
         String x = Main.getValidation();
         if (x.equals(pass)){
             return true;

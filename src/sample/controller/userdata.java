@@ -68,6 +68,7 @@ public class userdata implements Initializable {
 
     @FXML
     private TextField Tprint;
+
     @FXML
     private static TextArea textArea;
 
@@ -81,10 +82,7 @@ public class userdata implements Initializable {
     public static double price;
     public static double totdisc;
     public static int totnetprice;
-
     private selling selling;
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getGenerated(getOurId());
@@ -106,23 +104,9 @@ public class userdata implements Initializable {
                 }
             }
         });
-
-
-    }
-
-    public String  timeNow() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
     }
     public int getOurId(){
-        int id;
-        if (sample.controller.selling.isIsmod()){
-            id= sample.controller.selling.getIdmod();
-        }
-        else {
-            id = sample.controller.selling.getIdgenerate();
-        }
+        int id = sample.controller.selling.getIdgenerate();
         return id;
     }
     public void fetchِAuto(int id){
@@ -143,7 +127,6 @@ public class userdata implements Initializable {
     }
 
     public static void getGenerated(int id) {
-
         // coping data to another Field
         String sqlscript = "SELECT * FROM orderdetails where  orderNo = "+id+";";
         try {
@@ -220,7 +203,6 @@ public class userdata implements Initializable {
 
     public  void gotoselling(javafx.event.ActionEvent actionEvent){
         try {
-            sample.controller.selling.setIsmod(false);
             Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/selling.fxml"));
             Scene userscene = new Scene(userview);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -306,7 +288,7 @@ public class userdata implements Initializable {
         stringBuilder.append("      الدليفري  :    "+"\t\t\t\t"+delivery+"\n");
         stringBuilder.append("       الإجمالي  :    "+"\t\t\t\t"+totnetprice+"\n");
         stringBuilder.append("--------------------------------------------\n");
-        stringBuilder.append( "        سهرتك تحلي في رمضان مع كنافة هت               "+"\n");
+        stringBuilder.append( "        سهرتك تحلي مع كنافة هت               "+"\n");
         stringBuilder.append( "            المجاورة السابعة-بجوار عالم أليف                "+"\n");
         text.setText(stringBuilder.toString());
         return text;
@@ -316,6 +298,8 @@ public class userdata implements Initializable {
         savingNewData();
         printNode(getPrintableText());
     }
+
+
     public static void outprint(int id){
         getGenerated(id);
         printNode(getPrintableText());

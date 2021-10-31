@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sample.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -144,21 +145,31 @@ public class ordersConfig implements Initializable {
         setOrdersTable();
     }
     public void dropTableRow(javafx.event.ActionEvent actionEvent){
-
-        if (idnoofselected()!=0){
-            droprowwithid(idnoofselected());
-        }else {
-            String selection = "من فضلك حدد الصف المراد حذفة ";
-            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
-            alert.showAndWait();
+        try {
+            if (Main.isEnter()){
+                if (idnoofselected()!=0){
+                    droprowwithid(idnoofselected());
+                }else {
+                    String selection = "من فضلك حدد الصف المراد حذفة ";
+                    Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            }else {
+                String selection = "من فضلك ادخل الرقم السري الرئيسي ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
         }
     }
 
     public void preEditing(int typed){
-        String sqlscript1 = "DELETE FROM `kunafahut`.`preorder`;";
+        String sqlscript1 = "truncate `kunafahut`.`preorder`;";
         String sendOrderData = "insert into preorder ( type, name, no, quantity, price, disc, netPrice)\n" +
                 "select type, name, no, quantity, price, disc, netPrice from ordersdata WHERE `orderNo` ="+typed+";";
-        String sqlscript2 = "DELETE FROM `kunafahut`.`ordersdata` WHERE `orderNo` ="+typed+";";
+        String sqlscript2 = "DELETE * FROM `kunafahut`.`ordersdata` WHERE `orderNo` ="+typed+";";
         try {
             selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript1);
             selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderData);
@@ -168,7 +179,6 @@ public class ordersConfig implements Initializable {
         }
     }
     public void menuPage(javafx.event.ActionEvent actionEvent){
-
         try {
             Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/menuPage.fxml"));
             Scene userscene = new Scene(userview);
@@ -183,36 +193,48 @@ public class ordersConfig implements Initializable {
 
     }
     public void editOrder(javafx.event.ActionEvent actionEvent){
-        if (idnoofselected()!=0){
-            selling.setIsmod(true);
-            int id = idnoofselected();
-            selling.setIdmod(id);
-            preEditing(id);
-            Parent userview = null;
-            try {
-                userview = FXMLLoader.load(getClass().getResource("../fxml/selling.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-                String selection = "خطأ في التعديل!!!! ";
+        try {
+            if (Main.isEnter()){
+                if (idnoofselected()!=0){
+                    selling.setIsmod(true);
+                    int id = idnoofselected();
+                    selling.setIdmod(id);
+                    preEditing(id);
+                    Parent userview = null;
+                    try {
+                        userview = FXMLLoader.load(getClass().getResource("../fxml/selling.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        String selection = "خطأ في التعديل!!!! ";
+                        Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                        alert.showAndWait();
+                    }
+                    Scene userscene = new Scene(userview);
+                    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(userscene);
+                    window.show();
+                }else {
+                    String selection = "من فضلك حدد الصف المراد تعديلة ";
+                    Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            }else {
+                String selection = "من فضلك ادخل الرقم السري الرئيسي ";
                 Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
                 alert.showAndWait();
             }
-            Scene userscene = new Scene(userview);
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(userscene);
-            window.show();
-        }else {
-            String selection = "من فضلك حدد الصف المراد تعديلة ";
-            Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
-            alert.showAndWait();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
         }
+
     }
     public void fastPrint(javafx.event.ActionEvent actionEvent){
         int id = idnoofselected();
         if (id!=0){
             userdata.outprint(id);
         }else {
-            String selection = "من فضلك حدد الصف المراد تعديلة ";
+            String selection = "من فضلك حدد الصف المراد طباعتة ";
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }

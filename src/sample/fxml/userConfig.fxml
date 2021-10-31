@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="694.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userConfig">
    <children>
-      <VBox layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="694.0" prefWidth="1309.0">
+      <VBox layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="788.0" prefWidth="1388.0">
          <children>
             <HBox prefHeight="50.0" prefWidth="600.0">
                <children>

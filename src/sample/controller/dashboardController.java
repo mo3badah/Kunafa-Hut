@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.scene.Node;
@@ -23,6 +25,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import static java.time.LocalTime.now;
 
 public class dashboardController implements Initializable{
     @FXML
@@ -64,7 +68,7 @@ public class dashboardController implements Initializable{
         firstPane.getData().clear();
         XYChart.Series series = new XYChart.Series();
         try{
-            String sqlscript = "SELECT    DATE(orderTime) as DATE, SUM(totPrice) as price\n" +
+            String sqlscript = "SELECT DATE(orderTime) as DATE, SUM(totPrice) as price\n" +
                     "FROM      kunafahut.orderdetails\n" +
                     "GROUP BY  DATE(orderTime) order by DATE(orderTime) desc limit 7;";
 
@@ -80,12 +84,21 @@ public class dashboardController implements Initializable{
         firstPane.getData().addAll(series);
         firstPane.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
     }
+    public Long getNoQuarter(){
+        Date dNow = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMdd");
+        String datetime = ft.format(dNow);
+        int minus = Integer.parseInt(datetime) - 300;
+        String no = minus + "000";
+        return Long.parseLong(no);
+    }
+
     private void  loadData(){
         pieview.getChildren().clear();
         ObservableList<PieChart.Data>list= FXCollections.observableArrayList();
         try{
             String sqlscript = "SELECT    type, name, SUM(netPrice) as price\n" +
-                    "FROM      kunafahut.ordersdata\n" +
+                    "FROM      kunafahut.ordersdata Where orderNo >=  "+getNoQuarter()+"\n" +
                     "GROUP BY type,name;";
 
             ResultSet dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
@@ -97,12 +110,14 @@ public class dashboardController implements Initializable{
             e.getCause();
         }
         PieChart The_Owners = new PieChart(list);
-        The_Owners.setTitle("مبيعات السلع");
+        The_Owners.setTitle("مبيعات السلع ربع سنوية");
         pieview.getChildren().add(The_Owners);
     }
     private void loadMainData(){
         try{
-            String sqlscriptDay = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= now() - INTERVAL 1 DAY;";
+            String sqlscriptDay;
+            if (now().getHour()>= 12){sqlscriptDay = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= interval 12 hour + curdate();";
+            }else {sqlscriptDay = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= interval 12 hour + curdate() - INTERVAL 1 DAY;"; }
             String sqlscriptWeek = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= now() - INTERVAL 1 WEEK;";
             String sqlscriptMonth = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= now() - INTERVAL 1 MONTH;";
 

@@ -133,12 +133,10 @@ public class selling implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setSellingTable();
         initializeCombo();
-        System.out.println(checkEmpty());
     }
     public String checkKlasicTypes(ToggleGroup x){
         RadioButton selectedRadioButton = (RadioButton) x.getSelectedToggle();
         return selectedRadioButton.getId();
-        //onePrice.setText(toogleGroupValue);
     }
     // Classic Buttons
 
@@ -638,10 +636,8 @@ public class selling implements Initializable {
         double afterDisc = price;
         try {
             typeId = checkKlasicTypes(type7);
-           // System.out.println("check"+typeId);
             if (typeId.equals("Cdiscno")){
                 try {
-                   // System.out.println("discNo");
                     afterDisc = price-Double.valueOf(Ediscno.getText());
                 }catch (Exception e){
                     String selection = "من فضلك ادخل رقم الخصم اولاً ";
@@ -651,7 +647,6 @@ public class selling implements Initializable {
             }else if (typeId.equals("Cdiscratio")){
                 try {
                     if ((!Double.valueOf(Ediscratio.getText()).equals(0.0))){
-                       // System.out.println("Cdiscratio");
                         afterDisc = price*(1-Double.valueOf(Ediscratio.getText())/100);
                     }
                 }catch (Exception e){
@@ -660,16 +655,13 @@ public class selling implements Initializable {
                     alert.showAndWait();
                 }
             }else if (typeId.equals("Free")){
-                // System.out.println("Free");
                 afterDisc = 0.0;
             }
         }catch (Exception e){
             return afterDisc;
         }
-
         return afterDisc;
     }
-
     public void addItem(javafx.event.ActionEvent actionEvent){
         try {
             double price = Double.parseDouble(onePrice.getText());
@@ -692,9 +684,7 @@ public class selling implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
             alert.showAndWait();
         }
-
     }
-
     public void clearDisc(){
         for (Toggle t : type7.getToggles()) {
             if (t instanceof RadioButton) {
@@ -750,7 +740,7 @@ public class selling implements Initializable {
     }
     public  void clearAllData(){
         // clear table data
-        String sqlscript = "DELETE FROM `kunafahut`.`preorder`";
+        String sqlscript = "truncate `kunafahut`.`preorder`";
         try {
             initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
         } catch (SQLException e) {
@@ -785,14 +775,9 @@ public class selling implements Initializable {
             }
             TallDisc.setText(String.valueOf(allDisc));
             TallTotal.setText(String.valueOf(allTotal));
-
-
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-
         Ttype.setCellValueFactory(new PropertyValueFactory<>("type"));
         Tname.setCellValueFactory(new PropertyValueFactory<>("name"));
         Tno.setCellValueFactory(new PropertyValueFactory<>("no"));
@@ -855,7 +840,6 @@ public class selling implements Initializable {
         if (checkEmpty()==1){
             printing();
             userdata.outprint(idgenerate);
-            //userdata.bill();
         }else {
             String selection = "من فضلك ادخل بيانات الاوردر ";
             Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
@@ -864,19 +848,34 @@ public class selling implements Initializable {
 
     }
     public void menuPage(javafx.event.ActionEvent actionEvent){
-
-        try {
-            Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/menuPage.fxml"));
-            Scene userscene = new Scene(userview);
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(userscene);
-            window.show();
-
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
+        if (ismod){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("الخروج اثناء تعديل الاوردر");
+            alert.setContentText("هل تريد الخروج من التعديل وحذف الاوردر نهائياً؟");
+            ButtonType okButton = new ButtonType("نعم، اخرج", ButtonBar.ButtonData.YES);
+            ButtonType cancelButton = new ButtonType("لا، اكمل", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(okButton, cancelButton);
+            alert.showAndWait().ifPresent(type -> {
+                if (type == okButton) {
+                    setIsmod(false);
+                    clearAllData();
+                } else {
+                    System.out.println("say nothing");
+                }
+            });
         }
-
+        if (!ismod){
+            try {
+                Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/menuPage.fxml"));
+                Scene userscene = new Scene(userview);
+                Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                window.setScene(userscene);
+                window.show();
+            }catch (Exception e){
+                e.printStackTrace();
+                e.getCause();
+            }
+        }
     }
     public int checkEmpty(){
         int check = 0;
@@ -892,22 +891,19 @@ public class selling implements Initializable {
         }
         return check;
     }
-
-
     public void printing(){
-
         int id;
         String sendOrderDetails;
         // generating
         if (ismod){
             id=idmod;
+            setIdgenerate(id);
         }
         else {
             setIdgenerate();
             id =idgenerate;
         }
-
-        // set ordet disc
+        // set order disc
         Double price = allTotal+allDisc;
         if (Orderdisc.isSelected()){
             Double x;
@@ -936,8 +932,8 @@ public class selling implements Initializable {
             e.getCause();
         }
         clearAllData();
+        setIsmod(false);
     }
-
     public void setIdgenerate(){
         // coping data to another Field
         String sqlscript = "SELECT orderNo FROM orderdetails ORDER BY orderNo DESC LIMIT 1;";

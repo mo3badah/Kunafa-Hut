@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="1309.0" prefHeight="694.0" stylesheets="@../styleSheet/signIn.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.signIn">
+<AnchorPane maxWidth="1309.0" prefHeight="788.0" prefWidth="1388.0" stylesheets="@../styleSheet/signIn.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.signIn">
    <children>
       <VBox layoutX="-15.0" prefHeight="632.0" prefWidth="1309.0">
          <children>

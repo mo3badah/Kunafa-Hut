@@ -67,8 +67,6 @@ public class menuPage implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
-
-
     }
     public  void gotouserConfig(javafx.event.ActionEvent actionEvent){
         try {
@@ -83,13 +81,28 @@ public class menuPage implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
                 alert.showAndWait();
             }
-
-
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
         }
-
     }
-
+    public  void gotodashboard(javafx.event.ActionEvent actionEvent){
+        try {
+            if (Main.isEnter()){
+                Parent userview = FXMLLoader.load(menuPage.class.getResource("../fxml/dashboard.fxml"));
+                Scene userscene = new Scene(userview);
+                Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                window.setScene(userscene);
+                window.show();
+            }else {
+                String selection = "من فضلك ادخل الرقم السري الرئيسي ";
+                Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }
+

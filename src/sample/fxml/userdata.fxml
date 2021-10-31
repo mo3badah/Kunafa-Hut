@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userdata" maxHeight="694.0" maxWidth="1309.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
+<AnchorPane fx:id="userdata" maxHeight="694.0" maxWidth="1309.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="788.0" prefWidth="1388.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userdata">
    <children>
       <VBox alignment="CENTER" layoutX="32.0" layoutY="-91.0" maxWidth="1338.0" prefHeight="807.0" prefWidth="1257.0" AnchorPane.bottomAnchor="-22.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="-91.0">
          <children>
@@ -54,7 +54,7 @@
                      <children>
                         <VBox prefHeight="157.0" prefWidth="658.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#gotoselling" prefHeight="59.0" prefWidth="291.0" stylesheets="@../styleSheet/userdata.ss.css" text="الكاشير">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotoselling" prefHeight="59.0" prefWidth="291.0" stylesheets="@../styleSheet/userdata.ss.css" text="الكاشير">
                                  <graphic>
                                     <ImageView fx:id="menuPageImage1" fitHeight="51.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
