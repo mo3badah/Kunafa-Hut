@@ -793,9 +793,7 @@ public class selling implements Initializable {
         Connection dbconn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver loaded");
             dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
-            System.out.println("DataBase connected");
         } catch (ClassNotFoundException | SQLException var2) {
             System.err.println(var2.getMessage());
         }

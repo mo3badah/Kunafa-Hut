@@ -29,8 +29,7 @@ public class signIn implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(main.getSqlUser());
-        System.out.println(main.getSqlPass());
+
     }
     public void buttonAlert(javafx.event.ActionEvent actionEvent) throws SQLException {
 
@@ -49,7 +48,6 @@ public class signIn implements Initializable {
                 databaseUsername = dbresLog.getString("username");
                 databasePassword = dbresLog.getString("password");
             }
-            System.out.println(databaseUsername + "\n" + databasePassword + "\n" + password);
             if (userName.getText().equals(databaseUsername) && password.getText().equals(databasePassword)) {
                 loginText.setText("             مبروك لقد تم تسجيل الدخول بنجاح           ");
                 loginText.setTextFill(Color.GREEN);
@@ -78,9 +76,7 @@ public class signIn implements Initializable {
         Connection dbconn;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver loaded");
             dbconn = DriverManager.getConnection(dburl, dbuser, dbpass);
-            System.out.println("DataBase connected");
             dbstm = dbconn.createStatement();
         } catch (ClassNotFoundException | SQLException var2) {
             System.err.println(var2.getMessage());
