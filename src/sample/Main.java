@@ -27,6 +27,8 @@ public class Main extends Application {
         this.sqlPass = sqlPass;
     }
 
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primarystage = primaryStage;
