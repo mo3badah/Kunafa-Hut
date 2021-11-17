@@ -18,7 +18,7 @@
 
 <AnchorPane maxWidth="1309.0" prefHeight="788.0" prefWidth="1388.0" stylesheets="@../styleSheet/signIn.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.signIn">
    <children>
-      <VBox layoutX="-15.0" prefHeight="632.0" prefWidth="1309.0">
+      <VBox layoutX="-15.0" prefHeight="788.0" prefWidth="1388.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>

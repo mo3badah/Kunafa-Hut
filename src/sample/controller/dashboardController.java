@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.Main;
 
 import static java.time.LocalTime.now;
 
@@ -55,6 +56,7 @@ public class dashboardController implements Initializable{
 
     @FXML
     private Label tDay;
+    private Main main;
 
 
     @Override
@@ -72,7 +74,7 @@ public class dashboardController implements Initializable{
                     "FROM      kunafahut.orderdetails\n" +
                     "GROUP BY  DATE(orderTime) order by DATE(orderTime) desc limit 7;";
 
-            ResultSet dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            ResultSet dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 series.getData().add(new XYChart.Data(dbResAllTotal.getString("DATE"),dbResAllTotal.getInt("price")));
             }
@@ -101,7 +103,7 @@ public class dashboardController implements Initializable{
                     "FROM      kunafahut.ordersdata Where orderNo >=  "+getNoQuarter()+"\n" +
                     "GROUP BY type,name;";
 
-            ResultSet dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            ResultSet dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 list.add(new PieChart.Data(dbResAllTotal.getString("type")+" "+dbResAllTotal.getString("name"),dbResAllTotal.getDouble("price")));
             }
@@ -121,9 +123,9 @@ public class dashboardController implements Initializable{
             String sqlscriptWeek = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= now() - INTERVAL 1 WEEK;";
             String sqlscriptMonth = "select count(orderNo) as num, sum(totPrice) as price from kunafahut.orderdetails where orderTime >= now() - INTERVAL 1 MONTH;";
 
-            ResultSet dbResAllTotalDay = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscriptDay);
-            ResultSet dbResAllTotalWeek = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscriptWeek);
-            ResultSet dbResAllTotalMonth = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscriptMonth);
+            ResultSet dbResAllTotalDay = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscriptDay);
+            ResultSet dbResAllTotalWeek = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscriptWeek);
+            ResultSet dbResAllTotalMonth = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/kunafahut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscriptMonth);
             while (dbResAllTotalDay.next()) {
                 nDay.setText(dbResAllTotalDay.getString("num"));
                 tDay.setText(String.valueOf(dbResAllTotalDay.getInt("price")));

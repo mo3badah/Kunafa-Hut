@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import sample.Main;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -90,6 +91,8 @@ public class itemConfig implements Initializable {
     @FXML
     private TextField insBig1;
 
+    private Main main;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setUsersTable();
@@ -125,7 +128,7 @@ public class itemConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "UPDATE kunafahut.types SET type = '"+type+"',name = '"+name+"',big = "+big+", medium = "+medium+" WHERE type ='"+type+"' AND name='"+name+"';";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     e.printStackTrace();
                     e.getCause();
@@ -157,7 +160,7 @@ public class itemConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "UPDATE kunafahut.added SET type = '"+type+"',name = '"+name+"',mediumName = '"+mediumName+"',bigName = '"+bigName+"',bigPrice = "+big+", mediumPrice = "+medium+" WHERE type ='"+type+"' AND name='"+name+"';";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     String selection = "من فضلك ادخل النوع والاسم مطابقاً اولاً ";
                     Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
@@ -187,7 +190,7 @@ public class itemConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "DELETE FROM kunafahut.added WHERE type ='"+type+"' AND name='"+name+"';";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     e.printStackTrace();
                     e.getCause();
@@ -220,7 +223,7 @@ public class itemConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "INSERT INTO added (type, name, mediumName, mediumPrice, bigName, bigPrice) values ('"+type+"','"+name+"','"+mediumName+"',"+medium+",'"+bigName+"',"+big+");";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     String selection = "من فضلك لا تدخل قيم مكررة ً ";
                     Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
@@ -250,7 +253,7 @@ public class itemConfig implements Initializable {
             try {
                 String sqlscript = "SELECT * from kunafahut.types where type='"+type+"' And name='"+name+"';";
 
-                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
 
                 while (dbResAllTotal.next()) {
                     insType1.setText(dbResAllTotal.getString("type"));
@@ -276,7 +279,7 @@ public class itemConfig implements Initializable {
             try {
                 String sqlscript = "SELECT * from kunafahut.added where type='"+type+"' And name='"+name+"';";
 
-                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
 
                 while (dbResAllTotal.next()) {
                     insType2.setText(dbResAllTotal.getString("type"));
@@ -298,8 +301,8 @@ public class itemConfig implements Initializable {
         try {
             String sqlscript = "SELECT * from kunafahut.types";
             String sqlscript2 = "SELECT * from kunafahut.added";
-            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
-            dbResAllTotal2 = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript2);
+            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
+            dbResAllTotal2 = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript2);
 
             while (dbResAllTotal.next()) {
                 oblist1.add(new itemTable1(dbResAllTotal.getString("type"),dbResAllTotal.getString("name"), dbResAllTotal.getDouble("big"),dbResAllTotal.getDouble("medium")));

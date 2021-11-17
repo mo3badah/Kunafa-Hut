@@ -151,7 +151,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -174,7 +174,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -199,7 +199,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -234,7 +234,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -257,7 +257,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -280,7 +280,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -305,7 +305,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -340,7 +340,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -375,7 +375,7 @@ public class selling implements Initializable {
         if (typeId.equals("added")) {
             Oname = (String) comboNew.getValue();
             String sqlscript = "SELECT * from kunafahut.added where name = '" + Oname + "'";
-            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oquantity = dbResSell.getString("mediumName");
@@ -386,7 +386,7 @@ public class selling implements Initializable {
         } else {
 
             String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oname = dbResSell.getString("name");
@@ -428,7 +428,7 @@ public class selling implements Initializable {
         if (typeId.equals("added")) {
             Oname = (String) comboNew.getValue();
             String sqlscript = "SELECT * from kunafahut.added where name = '" + Oname + "'";
-            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oquantity = dbResSell.getString("bigName");
@@ -437,7 +437,7 @@ public class selling implements Initializable {
         }
         else {
             String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResSell.next()) {
                 Otype = dbResSell.getString("type");
                 Oname = dbResSell.getString("name");
@@ -469,7 +469,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -494,7 +494,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -519,7 +519,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -544,7 +544,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -569,7 +569,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -594,7 +594,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -619,7 +619,7 @@ public class selling implements Initializable {
             alert.showAndWait();
         }
         String sqlscript = "SELECT * from kunafahut.types where id = '" + typeId + "'";
-        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+        dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
         while (dbResSell.next()) {
             Otype = dbResSell.getString("type");
             Oname = dbResSell.getString("name");
@@ -671,7 +671,7 @@ public class selling implements Initializable {
             // save ItemData in the preorder table
             String sqlscript = "INSERT INTO `kunafahut`.`preorder` (`type`, `name`, `no`, `quantity`, `price`, `disc`, `netPrice`) VALUES ('"+Otype+"','"+Oname+"',"+Ono+",'"+Oquantity+"',"+Oprice+","+Odisc+","+Onetprice+")";
             try {
-                initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
+                initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript);
                 System.out.println("updated successfully!");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -722,7 +722,7 @@ public class selling implements Initializable {
             typed = sellingTable.getSelectionModel().getSelectedItem().rowNo;
             String sqlscript = "DELETE FROM `kunafahut`.`preorder` WHERE `rowNo` ="+typed+"";
             try {
-                initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
+                initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -742,7 +742,7 @@ public class selling implements Initializable {
         // clear table data
         String sqlscript = "truncate `kunafahut`.`preorder`";
         try {
-            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -761,9 +761,9 @@ public class selling implements Initializable {
             String sqlscript = "SELECT * from kunafahut.preorder";
             String sqlAllTotal = "SELECT SUM(netPrice) as totalNetPrice from kunafahut.preorder";
             String sqlAllDisc = "SELECT SUM(disc) AS totalDisc from kunafahut.preorder";
-            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
-            dbResAllTotal = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlAllTotal);
-            dbResAllDisc = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlAllDisc);
+            dbResSell = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
+            dbResAllTotal = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlAllTotal);
+            dbResAllDisc = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlAllDisc);
             while (dbResAllTotal.next()){
                 allTotal = (Double) dbResAllTotal.getDouble("totalNetPrice");
             }
@@ -805,7 +805,7 @@ public class selling implements Initializable {
     public void initializeCombo(){
         String sqlscript2 = "SELECT * FROM added ;";
         try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript2);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript2);
             while (dbResGetId.next()){
 
                 comboNew.getItems().addAll(dbResGetId.getString("name"));
@@ -881,7 +881,7 @@ public class selling implements Initializable {
         int check = 0;
         try {
             String sendOrderDetails = "SELECT EXISTS (SELECT 1 FROM preorder);";
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sendOrderDetails);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sendOrderDetails);
             while (dbResGetId.next()){
 
                check = dbResGetId.getInt(1);
@@ -924,8 +924,8 @@ public class selling implements Initializable {
         }
 
         try {
-            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderData);
-            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderData);
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -939,7 +939,7 @@ public class selling implements Initializable {
         String sqlscript = "SELECT orderNo FROM orderdetails ORDER BY orderNo DESC LIMIT 1;";
         int getId=0;
         try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResGetId.next()){
                 getId = (int) dbResGetId.getDouble("orderNo");
             }

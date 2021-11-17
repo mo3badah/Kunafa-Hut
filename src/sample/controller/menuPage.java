@@ -14,6 +14,7 @@ import sample.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class menuPage implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {

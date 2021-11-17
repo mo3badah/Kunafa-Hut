@@ -8,6 +8,24 @@ import javafx.stage.Stage;
 public class Main extends Application {
     Stage primarystage;
     static Parent root;
+    private static String sqlUser = "moreda" ;
+    private static String sqlPass = "moreda2021";
+
+    public static String getSqlUser() {
+        return sqlUser;
+    }
+
+    public void setSqlUser(String sqlUser) {
+        this.sqlUser = sqlUser;
+    }
+
+    public static String getSqlPass() {
+        return sqlPass;
+    }
+
+    public void setSqlPass(String sqlPass) {
+        this.sqlPass = sqlPass;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

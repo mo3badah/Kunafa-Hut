@@ -47,8 +47,10 @@ public class userConfig implements Initializable {
 
     @FXML
     private TextField Tuserpass;
+
     ObservableList<userTabel> oblist = FXCollections.observableArrayList();
 
+    private Main main;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +63,7 @@ public class userConfig implements Initializable {
         ResultSet dbResAllTotal;
         try {
             String sqlscript = "SELECT * from kunafahut.user";
-            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 oblist.add(new userTabel(dbResAllTotal.getString("username"),dbResAllTotal.getString("password"), dbResAllTotal.getInt("phone"),dbResAllTotal.getTimestamp("create_time")));
             }
@@ -98,7 +100,7 @@ public class userConfig implements Initializable {
             try {
                 String sqlscript = "SELECT * from kunafahut.user where  username='"+userName+"';";
 
-                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+                dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
 
                 while (dbResAllTotal.next()) {
                     TuserName.setText(dbResAllTotal.getString("username"));
@@ -125,7 +127,7 @@ public class userConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "UPDATE kunafahut.user SET username = '"+userName+"',password = '"+password+"',phone = "+phone+", create_time = current_timestamp WHERE username='"+userName+"';";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     e.printStackTrace();
                     e.getCause();
@@ -153,7 +155,7 @@ public class userConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "INSERT INTO user (username,phone, password, create_time) values ('"+userName+"',"+phone+",'"+password+"',current_timestamp );";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     String selection = "من فضلك لا تدخل قيم مكررة ً ";
                     Alert alert = new Alert(Alert.AlertType.ERROR, " " + selection + " !!!", ButtonType.OK);
@@ -183,7 +185,7 @@ public class userConfig implements Initializable {
                 // coping data to another Field
                 String sendOrderDetails = "DELETE FROM kunafahut.user WHERE username='"+userName+"';";
                 try {
-                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+                    selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
                 } catch (SQLException e) {
                     e.printStackTrace();
                     e.getCause();

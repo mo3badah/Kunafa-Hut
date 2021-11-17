@@ -29,10 +29,12 @@ import java.time.LocalDateTime;
 
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.controller.selling;
 
 
 public class userdata implements Initializable {
+
     @FXML
     private AnchorPane userdata;
 
@@ -72,6 +74,8 @@ public class userdata implements Initializable {
     @FXML
     private static TextArea textArea;
 
+    private static Main main;
+
     public static int idgenerate;
     public static Timestamp orderTime;
     public static String username;
@@ -83,6 +87,8 @@ public class userdata implements Initializable {
     public static double totdisc;
     public static int totnetprice;
     private selling selling;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getGenerated(getOurId());
@@ -113,7 +119,7 @@ public class userdata implements Initializable {
         ResultSet dbResAllTotal;
         try {
             String sqlscript = "SELECT * from aleef.orderdetails where clientPhone = " + id + ";";
-            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/aleef?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 TuserName.setText(dbResAllTotal.getString("clientName"));
                 Tphone.setText(dbResAllTotal.getString("clientPhone"));
@@ -130,7 +136,7 @@ public class userdata implements Initializable {
         // coping data to another Field
         String sqlscript = "SELECT * FROM orderdetails where  orderNo = "+id+";";
         try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResGetId.next()){
                 idgenerate = dbResGetId.getInt("orderNo");
                 orderTime = dbResGetId.getTimestamp("orderTime");
@@ -161,7 +167,7 @@ public class userdata implements Initializable {
         String sendOrderDetails = "UPDATE orderdetails set clientName = '"+username+"',clientPhone = "+userphone+",clientLocation = '"+userlocation+"',comment = '"+comment+"', delivery = "+delivery+", totNetPrice = totPrice+delivery where orderNo = "+idgenerate+";";
 
         try {
-            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderDetails);
+            initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderDetails);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -255,7 +261,7 @@ public class userdata implements Initializable {
         stringBuilder.append("     الصنف        الكمية    الخصم الإجمالي" + "\n");
         String sqlscript = "SELECT * FROM ordersdata where orderNo = "+idgenerate+";";
         try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript);
             while (dbResGetId.next()){
                 String type = dbResGetId.getString("type");
                 String name = dbResGetId.getString("name");
@@ -271,7 +277,7 @@ public class userdata implements Initializable {
         }
         String sqlscript2 = "SELECT * FROM orderdetails  where orderNo = "+idgenerate+";";
         try {
-            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true", "moreda", "moreda2021").executeQuery(sqlscript2);
+            ResultSet dbResGetId = (ResultSet) initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(), main.getSqlPass()).executeQuery(sqlscript2);
             while (dbResGetId.next()){
 
                 price = dbResGetId.getDouble("price");

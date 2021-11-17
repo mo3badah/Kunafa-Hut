@@ -63,13 +63,15 @@ public class ordersConfig implements Initializable {
     @FXML
     private TextField ifilter;
 
+    private Main main;
+
 
     ObservableList<ordersTable> oblist = FXCollections.observableArrayList();
     public void setOrdersTable(){
         ResultSet dbResAllTotal;
         try {
             String sqlscript = "SELECT * from kunafahut.orderdetails ORDER BY orderTime DESC";
-            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeQuery(sqlscript);
+            dbResAllTotal = (ResultSet) selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeQuery(sqlscript);
             while (dbResAllTotal.next()) {
                 oblist.add(new ordersTable(dbResAllTotal.getInt("orderNo"),dbResAllTotal.getInt("clientPhone"), dbResAllTotal.getInt("delivery"),dbResAllTotal.getInt("totNetPrice"),dbResAllTotal.getDouble("price"),dbResAllTotal.getDouble("totDisc"),dbResAllTotal.getDouble("totPrice"),dbResAllTotal.getTimestamp("orderTime"),dbResAllTotal.getString("clientName"),dbResAllTotal.getString("clientLocation"),dbResAllTotal.getString("cachierName")));
             }
@@ -136,8 +138,8 @@ public class ordersConfig implements Initializable {
         String sqlscript = "DELETE FROM `kunafahut`.`orderdetails` WHERE `orderNo` ="+typed+"";
         String sqlscript2 = "DELETE FROM `kunafahut`.`ordersdata` WHERE `orderNo` ="+typed+"";
         try {
-            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript);
-            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript2);
+            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript);
+            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript2);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -169,11 +171,11 @@ public class ordersConfig implements Initializable {
         String sqlscript1 = "truncate `kunafahut`.`preorder`;";
         String sendOrderData = "insert into preorder ( type, name, no, quantity, price, disc, netPrice)\n" +
                 "select type, name, no, quantity, price, disc, netPrice from ordersdata WHERE `orderNo` ="+typed+";";
-        String sqlscript2 = "DELETE * FROM `kunafahut`.`ordersdata` WHERE `orderNo` ="+typed+";";
+        String sqlscript2 = "DELETE FROM `kunafahut`.`ordersdata` WHERE `orderNo` ="+typed+";";
         try {
-            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript1);
-            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sendOrderData);
-            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021").executeUpdate(sqlscript2);
+            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript1);
+            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sendOrderData);
+            selling.initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass()).executeUpdate(sqlscript2);
         } catch (SQLException e) {
             e.printStackTrace();
         }

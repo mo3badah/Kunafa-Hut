@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.*;
 import javafx.stage.Stage;
+import sample.Main;
 
 public class signIn implements Initializable {
     public Statement dbstm;
@@ -24,12 +25,16 @@ public class signIn implements Initializable {
     @FXML
     private Label loginText;
 
+    private Main main;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(main.getSqlUser());
+        System.out.println(main.getSqlPass());
     }
     public void buttonAlert(javafx.event.ActionEvent actionEvent) throws SQLException {
 
-        initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true","moreda","moreda2021");
+        initializeDB("jdbc:mysql://localhost:3306/KunafaHut?verifyServerCertificate=false&useSSL=true",main.getSqlUser(),main.getSqlPass());
         if (userName.getText().isEmpty() == true) {
             loginText.setText("            من فضلك قم بادخال اسم المستحدم وكلمة المرور            ");
         } else try {
